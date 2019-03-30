@@ -1,4 +1,4 @@
-package judotrackerpro;
+package fr.android.judotrackerpro.entities;
 
 import java.util.Date;
 

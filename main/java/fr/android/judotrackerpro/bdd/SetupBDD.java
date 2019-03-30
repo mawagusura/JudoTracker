@@ -1,4 +1,4 @@
-package bdd;
+package fr.android.judotrackerpro.bdd;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

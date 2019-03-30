@@ -1,4 +1,4 @@
-package judotrackerpro;
+package fr.android.judotrackerpro.entities;
 
 public class Localisation {
     private int idLocalisation;
