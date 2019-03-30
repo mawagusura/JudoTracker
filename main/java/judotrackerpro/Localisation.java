@@ -1,11 +1,10 @@
 package judotrackerpro;
 
-class Localisation {
+public class Localisation {
     private int idLocalisation;
-    private String Ville;
     private double longitude, latitude;
 
-    public Localisation(int idLocalisation, String ville, double longitude, double latitude) {
+    public Localisation(int idLocalisation, double longitude, double latitude) {
         this.idLocalisation = idLocalisation;
         this.longitude = longitude;
         this.latitude = latitude;
@@ -13,10 +12,6 @@ class Localisation {
 
     public int getIdLocalisation() {
         return idLocalisation;
-    }
-
-    public String getVille() {
-        return Ville;
     }
 
     public double getLongitude() {

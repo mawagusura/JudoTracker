@@ -1,6 +1,6 @@
 package judotrackerpro;
 
-class Statistiques {
+public class Statistiques {
     private int idStats;
 
     private int dureeMatch; // En secondes

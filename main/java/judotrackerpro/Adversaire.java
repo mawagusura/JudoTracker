@@ -1,6 +1,6 @@
 package judotrackerpro;
 
-class Adversaire {
+public class Adversaire {
     public int idAdversaire;
     public String nomAdversaire, prenomAdversaire;
 

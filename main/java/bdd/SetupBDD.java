@@ -1,46 +1,46 @@
-package Database;
+package bdd;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
-public class JudoDatabase extends SQLiteOpenHelper {
+public class SetupBDD extends SQLiteOpenHelper {
 
-    private static final String TABLE_MATCHS = "Matchs";
-    private static final String COL_ID_MATCH = "match_id";
-    private static final String COL_DATE_MATCH = "match_date";
-    private static final String COL_FK_MATCH_LOCALISATION = "match_localisation";
-    private static final String COL_FK_MATCH_STATS = "match_stats";
-    private static final String COL_FK_MATCH_CATEGORIE = "match_categorie";
-    private static final String COL_FK_MATCH_ADVERSAIRE = "match_adversaire";
+    public static final String TABLE_MATCHS = "Matchs";
+    public static final String COL_ID_MATCH = "match_id";
+    public static final String COL_DATE_MATCH = "match_date";
+    public static final String COL_FK_MATCH_LOCALISATION = "match_localisation";
+    public static final String COL_FK_MATCH_STATS = "match_stats";
+    public static final String COL_FK_MATCH_CATEGORIE = "match_categorie";
+    public static final String COL_FK_MATCH_ADVERSAIRE = "match_adversaire";
 
-    private static final String TABLE_LOCALISATIONS = "Localisations";
-    private static final String COL_ID_LOCALISATION = "localisation_id";
-    private static final String COL_LATITUDE = "latitude";
-    private static final String COL_LONGITUDE = "longitude";
+    public static final String TABLE_LOCALISATIONS = "Localisations";
+    public static final String COL_ID_LOCALISATION = "localisation_id";
+    public static final String COL_LATITUDE = "latitude";
+    public static final String COL_LONGITUDE = "longitude";
 
-    private static final String TABLE_STATS = "Statistiques";
-    private static final String COL_ID_STATS = "stats_id";
-    private static final String COL_IPPONS_U = "ippons_u";
-    private static final String COL_WAZAARI_U = "wazaari_u";
-    private static final String COL_YUKO_U = "yuko_u";
-    private static final String COL_IPPONS_ADV = "ippons_adv";
-    private static final String COL_WAZAARI_ADV = "wazaari_adv";
-    private static final String COL_YUKO_ADV = "yuko_adv";
-    private static final String COL_PENALITES_U = "penalites_u";
-    private static final String COL_PENALITES_ADV = "penalites_adv";
+    public static final String TABLE_STATS = "Statistiques";
+    public static final String COL_ID_STATS = "stats_id";
+    public static final String COL_IPPONS_U = "ippons_u";
+    public static final String COL_WAZAARI_U = "wazaari_u";
+    public static final String COL_YUKO_U = "yuko_u";
+    public static final String COL_IPPONS_ADV = "ippons_adv";
+    public static final String COL_WAZAARI_ADV = "wazaari_adv";
+    public static final String COL_YUKO_ADV = "yuko_adv";
+    public static final String COL_PENALITES_U = "penalites_u";
+    public static final String COL_PENALITES_ADV = "penalites_adv";
 
-    private static final String TABLE_CATEGORIE = "Categories";
-    private static final String COL_ID_CATEGORIE = "categorie_id";
-    private static final String COL_SEXE_CATEGORIE = "categorie_sexe";
-    private static final String COL_POIDS_MIN_CATEGORIE = "categorie_poids_min";
-    private static final String COL_POIDS_MAX_CATEGORIE = "categorie_poids_max";
+    public static final String TABLE_CATEGORIE = "Categories";
+    public static final String COL_ID_CATEGORIE = "categorie_id";
+    public static final String COL_SEXE_CATEGORIE = "categorie_sexe";
+    public static final String COL_POIDS_MIN_CATEGORIE = "categorie_poids_min";
+    public static final String COL_POIDS_MAX_CATEGORIE = "categorie_poids_max";
 
-    private static final String TABLE_ADVERSAIRES = "Adversaires";
-    private static final String COL_ID_ADVERSAIRE = "adversaire_id";
-    private static final String COL_NOM_ADVERSAIRE = "adversaire_nom";
-    private static final String COL_PRENOM_ADVERSAIRE = "adversaire_prenom";
+    public static final String TABLE_ADVERSAIRES = "Adversaires";
+    public static final String COL_ID_ADVERSAIRE = "adversaire_id";
+    public static final String COL_NOM_ADVERSAIRE = "adversaire_nom";
+    public static final String COL_PRENOM_ADVERSAIRE = "adversaire_prenom";
 
     private static final String CREATE_TABLE_ADVERSAIRES = ""
             + "CREATE TABLE " + TABLE_ADVERSAIRES + " ("
@@ -53,7 +53,7 @@ public class JudoDatabase extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_CATEGORIE = ""
             + "CREATE TABLE " + TABLE_CATEGORIE + " ("
             + COL_ID_CATEGORIE + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + COL_SEXE_CATEGORIE + " INTEGER NOT NULL, "
+            + COL_SEXE_CATEGORIE + " TEXT NOT NULL, "
             + COL_POIDS_MIN_CATEGORIE + " REAL NOT NULL, "
             + COL_POIDS_MAX_CATEGORIE + " REAL NOT NULL "
             + ");";
@@ -62,13 +62,13 @@ public class JudoDatabase extends SQLiteOpenHelper {
             + "CREATE TABLE " + TABLE_STATS + " ("
             + COL_ID_STATS + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COL_IPPONS_U + " INTEGER NOT NULL, "
-            + COL_WAZAARI_U + " INTEGER NOT NULL "
+            + COL_WAZAARI_U + " INTEGER NOT NULL, "
             + COL_YUKO_U + " INTEGER NOT NULL, "
             + COL_IPPONS_ADV + " INTEGER NOT NULL, "
             + COL_WAZAARI_ADV + " INTEGER NOT NULL, "
-            + COL_YUKO_ADV + " INTEGER NOT NULL"
+            + COL_YUKO_ADV + " INTEGER NOT NULL,"
             + COL_PENALITES_U + " INTEGER NOT NULL, "
-            + COL_PENALITES_ADV + " INTEGER NOT NULL, "
+            + COL_PENALITES_ADV + " INTEGER NOT NULL "
             + ");";
 
     private static final String CREATE_TABLE_LOCALISATIONS = ""
@@ -88,7 +88,7 @@ public class JudoDatabase extends SQLiteOpenHelper {
             + ");"
             ;
 
-    public JudoDatabase(Context context, String name, CursorFactory factory, int version) {
+    public SetupBDD(Context context, String name, CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 

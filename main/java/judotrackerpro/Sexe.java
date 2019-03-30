@@ -1,5 +1,5 @@
 package judotrackerpro;
 
-enum Sexe {
+public enum Sexe {
     Homme, Femme
 }

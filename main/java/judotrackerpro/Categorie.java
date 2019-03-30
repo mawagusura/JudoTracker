@@ -1,17 +1,19 @@
 package judotrackerpro;
 
-class Categorie {
+public class Categorie {
     private int idCategorie;
-
     private Sexe sexe;
     private int poidsMin, poidsMax;
 
-    public Categorie(int idCategorie, Sexe sexe, int poidsMin, int poidsMax) {
+    public Categorie(int idCategorie, String sexe, int poidsMin, int poidsMax) {
         this.idCategorie = idCategorie;
-        // 0 = Homme, 1 = Femme
-        this.sexe = sexe;
+        this.sexe = Enum.valueOf(Sexe.class, sexe);
         this.poidsMin = poidsMin;
         this.poidsMax = poidsMax;
+    }
+
+    public int getIdCategorie() {
+        return idCategorie;
     }
 
     public Sexe getSexe() {
