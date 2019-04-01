@@ -3,12 +3,12 @@
 
     <group android:checkableBehavior="none">
     <item android:id="@+id/allPhotos"
-        android:title="Photos"
+        android:title="@string/all_photos"
         />
 
     <item
         android:id="@+id/allStats"
-        android:title="Statistiques"
+        android:title="@string/all_stats"
         />
     </group>
 </menu>
