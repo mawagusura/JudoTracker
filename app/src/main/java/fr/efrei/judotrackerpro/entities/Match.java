@@ -2,45 +2,45 @@ package fr.efrei.judotrackerpro.entities;
 
 import java.util.Date;
 
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
+
+@Entity(
+        foreignKeys = {
+                @ForeignKey(
+                        entity = Statistiques.class,
+                        parentColumns = "id_statistiques",
+                        childColumns = "id_match"
+                ),
+                @ForeignKey(
+                        entity = Adversaire.class,
+                        parentColumns = "id_adversaire",
+                        childColumns = "id_match"
+                )
+        })
 public class Match {
-    private int idMatch;
-    private Date dateMatch;
+    @PrimaryKey
+    private int id_match;
 
-    private Localisation localisation;
-    private Statistiques statistiques;
-    private Adversaire adversaire;
-    private Categorie categorie;
+    private int id_statistiques;
+    private int id_adversaire;
 
-    public Match(int idMatch, Date dateMatch, Localisation localisation, Statistiques statistiques, Adversaire adversaire, Categorie categorie) {
-        this.idMatch = idMatch;
-        this.dateMatch = dateMatch;
-        this.localisation = localisation;
-        this.statistiques = statistiques;
-        this.adversaire = adversaire;
-        this.categorie = categorie;
+    public Match(int id_match, int id_statistiques, int id_adversaire) {
+        this.id_match = id_match;
+        this.id_statistiques = id_statistiques;
+        this.id_adversaire = id_adversaire;
     }
 
-    public int getIdMatch() {
-        return idMatch;
+    public int getId_match() {
+        return id_match;
     }
 
-    public Date getDateMatch() {
-        return dateMatch;
+    public int getId_statistiques() {
+        return id_statistiques;
     }
 
-    public Localisation getLocalisation() {
-        return localisation;
-    }
-
-    public Statistiques getStatistiques() {
-        return statistiques;
-    }
-
-    public Adversaire getAdversaire() {
-        return adversaire;
-    }
-
-    public Categorie getCategorie() {
-        return categorie;
+    public int getId_adversaire() {
+        return id_adversaire;
     }
 }

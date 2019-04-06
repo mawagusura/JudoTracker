@@ -1,17 +1,24 @@
 package fr.efrei.judotrackerpro.entities;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Localisation {
-    private int idLocalisation;
-    private double longitude, latitude;
+    @PrimaryKey
+    private int id_localisation;
+
+    private double longitude;
+    private double latitude;
 
     public Localisation(int idLocalisation, double longitude, double latitude) {
-        this.idLocalisation = idLocalisation;
+        this.id_localisation = idLocalisation;
         this.longitude = longitude;
         this.latitude = latitude;
     }
 
     public int getIdLocalisation() {
-        return idLocalisation;
+        return id_localisation;
     }
 
     public double getLongitude() {

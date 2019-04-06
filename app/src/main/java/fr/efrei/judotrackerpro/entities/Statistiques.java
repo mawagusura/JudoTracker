@@ -1,7 +1,12 @@
 package fr.efrei.judotrackerpro.entities;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Statistiques {
-    private int idStats;
+    @PrimaryKey
+    private int id_stats;
 
     private int dureeMatch; // En secondes
     private int ipponsUtilisateur, wazaariUtilisateur, yukoUtilisateur, ipponsAdv, wazaartAdv,
@@ -9,7 +14,7 @@ public class Statistiques {
 
     public Statistiques(int idStats, int dureeMatch, int ipponsUtilisateur, int wazaariUtilisateur,
                         int yukoUtilisateur, int ipponsAdv, int wazaartAdv, int yukoAdv, int penalitesUtilisateur, int penalitesAdv) {
-        this.idStats = idStats;
+        this.id_stats = idStats;
         this.dureeMatch = dureeMatch;
         this.ipponsUtilisateur = ipponsUtilisateur;
         this.wazaariUtilisateur = wazaariUtilisateur;
@@ -22,7 +27,7 @@ public class Statistiques {
     }
 
     public int getIdStats() {
-        return idStats;
+        return id_stats;
     }
 
     public int getDureeMatch() {
