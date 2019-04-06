@@ -12,15 +12,19 @@ public class Categorie {
     private int poids_min;
     private int poids_max;
 
-    public Categorie(int idCategorie, String sexe, int poids_min, int poidsMax) {
-        this.id_categorie = idCategorie;
+    public Categorie(int id_categorie, String sexe, int poids_min, int poids_max) {
+        this.id_categorie = id_categorie;
         this.sexe = sexe;
         this.poids_min = poids_min;
-        this.poids_max = poidsMax;
+        this.poids_max = poids_max;
     }
 
-    public int getIdCategorie() {
+    public int getId_categorie() {
         return id_categorie;
+    }
+
+    public int getPoids_max() {
+        return poids_max;
     }
 
     public String getSexe() {
@@ -29,9 +33,5 @@ public class Categorie {
 
     public int getPoids_min() {
         return poids_min;
-    }
-
-    public int getPoids_Max() {
-        return poids_max;
     }
 }

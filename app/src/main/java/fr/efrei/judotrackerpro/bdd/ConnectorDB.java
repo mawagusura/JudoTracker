@@ -2,6 +2,7 @@ package fr.efrei.judotrackerpro.bdd;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import fr.efrei.judotrackerpro.dao.AdversaireDAO;
 import fr.efrei.judotrackerpro.dao.CategorieDAO;
 import fr.efrei.judotrackerpro.dao.CompetitionDAO;
@@ -14,8 +15,10 @@ import fr.efrei.judotrackerpro.entities.Competition;
 import fr.efrei.judotrackerpro.entities.Localisation;
 import fr.efrei.judotrackerpro.entities.Match;
 import fr.efrei.judotrackerpro.entities.Statistiques;
+import fr.efrei.judotrackerpro.utilities.Converters;
 
-@Database(entities = {Adversaire.class, Categorie.class, Competition.class, Localisation.class, Match.class, Statistiques.class}, version = 1)
+@Database(entities = {Adversaire.class, Categorie.class, Competition.class, Localisation.class, Match.class, Statistiques.class}, version = 1,  exportSchema = false)
+@TypeConverters({Converters.class})
 public abstract class ConnectorDB extends RoomDatabase {
 
     public abstract AdversaireDAO adversaireDao();

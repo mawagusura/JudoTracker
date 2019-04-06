@@ -8,14 +8,14 @@ public class Statistiques {
     @PrimaryKey
     private int id_stats;
 
-    private int dureeMatch; // En secondes
+    private int duree_match; // En secondes
     private int ipponsUtilisateur, wazaariUtilisateur, yukoUtilisateur, ipponsAdv, wazaartAdv,
             yukoAdv, penalitesUtilisateur, penalitesAdv;
 
-    public Statistiques(int idStats, int dureeMatch, int ipponsUtilisateur, int wazaariUtilisateur,
+    public Statistiques(int id_stats, int duree_match, int ipponsUtilisateur, int wazaariUtilisateur,
                         int yukoUtilisateur, int ipponsAdv, int wazaartAdv, int yukoAdv, int penalitesUtilisateur, int penalitesAdv) {
-        this.id_stats = idStats;
-        this.dureeMatch = dureeMatch;
+        this.id_stats = id_stats;
+        this.duree_match = duree_match;
         this.ipponsUtilisateur = ipponsUtilisateur;
         this.wazaariUtilisateur = wazaariUtilisateur;
         this.yukoUtilisateur = yukoUtilisateur;
@@ -26,12 +26,12 @@ public class Statistiques {
         this.penalitesAdv = penalitesAdv;
     }
 
-    public int getIdStats() {
+    public int getId_stats() {
         return id_stats;
     }
 
-    public int getDureeMatch() {
-        return dureeMatch;
+    public int getDuree_match() {
+        return duree_match;
     }
 
     public int getIpponsUtilisateur() {

@@ -1,6 +1,5 @@
 package fr.efrei.judotrackerpro.entities;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -12,13 +11,13 @@ public class Adversaire {
     public String nom_adversaire;
     public String prenom_adversaire;
 
-    public Adversaire(int idAdversaire, String nomAdversaire, String prenomAdversaire) {
-        this.id_adversaire = idAdversaire;
-        this.nom_adversaire = nomAdversaire;
-        this.prenom_adversaire = prenomAdversaire;
+    public Adversaire(int id_adversaire, String nom_adversaire, String prenom_adversaire) {
+        this.id_adversaire = id_adversaire;
+        this.nom_adversaire = nom_adversaire;
+        this.prenom_adversaire = prenom_adversaire;
     }
 
-    public int getIdAdversaire() {
+    public int getId_adversaire() {
         return id_adversaire;
     }
 

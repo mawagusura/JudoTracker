@@ -20,7 +20,7 @@ public interface MatchDAO {
     @Query("SELECT * FROM `match` WHERE id_adversaire = :id")
     List<Match> getByIdAdversaire(int id);
 
-    @Query("SELECT * FROM `match` WHERE id_statistiques = :id")
+    @Query("SELECT * FROM `match` WHERE id_stats = :id")
     List<Match> getByIdStatistiques(int id);
 
     @Insert

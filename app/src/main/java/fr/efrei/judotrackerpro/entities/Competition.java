@@ -1,8 +1,6 @@
 package fr.efrei.judotrackerpro.entities;
 
 import java.util.Date;
-
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
@@ -23,38 +21,39 @@ import androidx.room.PrimaryKey;
 
 public class Competition {
     @PrimaryKey
-    @ColumnInfo(name = "id_competition")
-    private int idCompet;
+    private int id_competition;
 
-    @ColumnInfo(name = "id_categorie")
-    private int idCategorie;
+    private int id_categorie;
+    private int id_localisation;
+    private Date date_competition;
 
-    @ColumnInfo(name = "id_localisation")
-    private int idLocalisation;
-
-    @ColumnInfo(name = "date_competition")
-    private Date dateCompet;
-
-    public Competition(int idCompet, Categorie categorie, Localisation localisation, Date dateCompet) {
-        this.idCompet = idCompet;
-        this.idLocalisation = categorie.getIdCategorie();
-        this.idLocalisation = localisation.getIdLocalisation();
-        this.dateCompet = dateCompet;
+    public Competition(int id_competition, Categorie categorie, Localisation localisation, Date date_competition) {
+        this.id_competition = id_competition;
+        this.id_categorie = categorie.getId_categorie();
+        this.id_localisation = localisation.getId_localisation();
+        this.date_competition = date_competition;
     }
 
-    public int getIdCompet() {
-        return idCompet;
+    public Competition(int id_competition, int id_categorie, int id_localisation, Date date_competition) {
+        this.id_competition = id_competition;
+        this.id_categorie = id_categorie;
+        this.id_localisation = id_localisation;
+        this.date_competition = date_competition;
     }
 
-    public int getIdCategorie() {
-        return idCategorie;
+    public int getId_competition() {
+        return id_competition;
     }
 
-    public int getIdLocalisation() {
-        return idLocalisation;
+    public int getId_categorie() {
+        return id_categorie;
     }
 
-    public Date getDateCompet() {
-        return dateCompet;
+    public int getId_localisation() {
+        return id_localisation;
+    }
+
+    public Date getDate_competition() {
+        return date_competition;
     }
 }

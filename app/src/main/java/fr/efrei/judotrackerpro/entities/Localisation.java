@@ -11,13 +11,13 @@ public class Localisation {
     private double longitude;
     private double latitude;
 
-    public Localisation(int idLocalisation, double longitude, double latitude) {
-        this.id_localisation = idLocalisation;
+    public Localisation(int id_localisation, double longitude, double latitude) {
+        this.id_localisation = id_localisation;
         this.longitude = longitude;
         this.latitude = latitude;
     }
 
-    public int getIdLocalisation() {
+    public int getId_localisation() {
         return id_localisation;
     }
 

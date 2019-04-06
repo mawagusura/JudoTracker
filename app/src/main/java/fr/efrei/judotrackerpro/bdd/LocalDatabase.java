@@ -65,10 +65,10 @@ public class LocalDatabase {
     }
 
     public List<Competition> getCompetitionsByLocalisation(Localisation localisation) {
-        return bdd.competitionDao().getByIdLocalisation(localisation.getIdLocalisation());
+        return bdd.competitionDao().getByIdLocalisation(localisation.getId_localisation());
     }
 
     public List<Competition> getCompetitionsByCategorie(Categorie categorie) {
-        return bdd.competitionDao().getByIdCategorie(categorie.getIdCategorie());
+        return bdd.competitionDao().getByIdCategorie(categorie.getId_categorie());
     }
 }
