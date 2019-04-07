@@ -27,7 +27,8 @@ public class LocalDatabase {
     public static LocalDatabase getInstance(Context context)
     {
         if (INSTANCE == null)
-        {   INSTANCE = new LocalDatabase(context);
+        {
+            INSTANCE = new LocalDatabase(context);
         }
         return INSTANCE;
     }
@@ -214,8 +215,8 @@ public class LocalDatabase {
         bdd.categorieDao().insert(cat);
     }
 
-    public void insertCategorieAll(Categorie... cat) {
-        bdd.categorieDao().insertAll(cat);
+    public void insertCategorieAll(List<Categorie> categories) {
+        bdd.categorieDao().insertAll(categories);
     }
 
     public void insertCompetition(Competition compet) {

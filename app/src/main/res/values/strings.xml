@@ -10,6 +10,15 @@
 
     <string name="map_lat">Latitude : </string>
     <string name="map_lon">Longitude : </string>
+    <string name="validate">Valider</string>
 
+    <string name="edit_name">Nom : </string>
+    <string name="edit_date">Date : </string>
+    <string name="_edit_date_btn">Modifier</string>
+    <string name="edit_cate">Catégorie : </string>
+    <string name="edit_sex">Sexe : </string>
+
+    <string name="homme">Homme</string>
+    <string name="femme">Femme</string>
 
 </resources>

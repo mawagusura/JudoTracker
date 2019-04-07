@@ -5,6 +5,7 @@ import java.util.List;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 import fr.efrei.judotrackerpro.back.entities.Categorie;
@@ -20,8 +21,8 @@ public interface CategorieDAO {
     @Query("SELECT * FROM categorie WHERE sexe LIKE :sexe")
     List<Categorie> getBySexe(String sexe);
 
-    @Insert
-    void insertAll(Categorie... categorie);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertAll(List<Categorie> categories);
 
     @Insert
     void insert(Categorie categorie);
