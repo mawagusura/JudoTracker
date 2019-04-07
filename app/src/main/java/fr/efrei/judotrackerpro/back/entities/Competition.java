@@ -28,16 +28,17 @@ public class Competition {
     private Date date_competition;
     private String nom_competition;
 
-    public Competition(int id_competition, String nom, Categorie categorie, Localisation localisation, Date date_competition) {
+    public Competition(int id_competition, String nom_competition, Categorie categorie, Localisation localisation, Date date_competition) {
         this.id_competition = id_competition;
         this.id_categorie = categorie.getId_categorie();
         this.id_localisation = localisation.getId_localisation();
         this.date_competition = date_competition;
+        this.nom_competition = nom_competition;
     }
 
-    public Competition(int id_competition, String nom, int id_categorie, int id_localisation, Date date_competition) {
+    public Competition(int id_competition, String nom_competition, int id_categorie, int id_localisation, Date date_competition) {
         this.id_competition = id_competition;
-        this.nom_competition = nom;
+        this.nom_competition = nom_competition;
         this.id_categorie = id_categorie;
         this.id_localisation = id_localisation;
         this.date_competition = date_competition;

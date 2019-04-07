@@ -14,12 +14,20 @@ import fr.efrei.judotrackerpro.back.entities.Statistiques;
 
 public class LocalDatabase {
 
-        // SINGLETON
-
     private static ConnectorDB bdd;
 
-    public LocalDatabase(Context context) {
+    private static LocalDatabase INSTANCE = null;
+
+    private LocalDatabase(Context context) {
         this.bdd = Room.databaseBuilder(context, ConnectorDB.class, "judotracker").allowMainThreadQueries().build();
+    }
+
+    public static LocalDatabase getInstance(Context context)
+    {
+        if (INSTANCE == null)
+        {   INSTANCE = new LocalDatabase(context);
+        }
+        return INSTANCE;
     }
 
     // GETTERS --------------------------------------------------
