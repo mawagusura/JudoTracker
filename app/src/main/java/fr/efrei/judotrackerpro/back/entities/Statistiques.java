@@ -1,4 +1,4 @@
-package fr.efrei.judotrackerpro.entities;
+package fr.efrei.judotrackerpro.back.entities;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

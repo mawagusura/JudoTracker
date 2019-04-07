@@ -8,4 +8,8 @@
     <string name="all_photos">Toutes mes photos</string>
     <string name="all_stats">Toutes mes stats</string>
 
+    <string name="map_lat">Latitude : </string>
+    <string name="map_lon">Longitude : </string>
+
+
 </resources>

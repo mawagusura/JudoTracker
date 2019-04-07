@@ -1,4 +1,4 @@
-package fr.efrei.judotrackerpro.entities;
+package fr.efrei.judotrackerpro.back.entities;
 
 import java.util.Date;
 import androidx.room.Entity;

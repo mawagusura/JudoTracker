@@ -1,4 +1,4 @@
-package fr.efrei.judotrackerpro.utilities;
+package fr.efrei.judotrackerpro.back.utilities;
 
 import java.util.Date;
 

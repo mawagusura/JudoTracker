@@ -1,16 +1,16 @@
-package fr.efrei.judotrackerpro.bdd;
+package fr.efrei.judotrackerpro.back.bdd;
 
 import android.content.Context;
 
 import java.util.List;
 
 import androidx.room.Room;
-import fr.efrei.judotrackerpro.entities.Adversaire;
-import fr.efrei.judotrackerpro.entities.Categorie;
-import fr.efrei.judotrackerpro.entities.Competition;
-import fr.efrei.judotrackerpro.entities.Localisation;
-import fr.efrei.judotrackerpro.entities.Match;
-import fr.efrei.judotrackerpro.entities.Statistiques;
+import fr.efrei.judotrackerpro.back.entities.Adversaire;
+import fr.efrei.judotrackerpro.back.entities.Categorie;
+import fr.efrei.judotrackerpro.back.entities.Competition;
+import fr.efrei.judotrackerpro.back.entities.Localisation;
+import fr.efrei.judotrackerpro.back.entities.Match;
+import fr.efrei.judotrackerpro.back.entities.Statistiques;
 
 public class LocalDatabase {
 
