@@ -63,22 +63,20 @@ public class CompetitionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_competition);
 
-        if(savedInstanceState == null){
+        mapFragment = new MapFragment();
+        matchesFragment = new MatchesFragment();
+        photoFragment = new PhotoFragment();
+        competStatsFragment = new CompetStatsFragment();
 
-            mapFragment = new MapFragment();
-            matchesFragment = new MatchesFragment();
-            photoFragment = new PhotoFragment();
-            competStatsFragment = new CompetStatsFragment();
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        if(savedInstanceState == null){
 
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.frameCompet, competStatsFragment);
             ft.commit();
-
-            BottomNavigationView navigation = findViewById(R.id.navigation);
-            navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         }
-
-
     }
 
 }
