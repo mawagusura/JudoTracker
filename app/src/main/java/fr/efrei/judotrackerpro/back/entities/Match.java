@@ -15,7 +15,13 @@ import androidx.room.PrimaryKey;
                         entity = Adversaire.class,
                         parentColumns = "id_adversaire",
                         childColumns = "id_match"
-                )
+                ),
+                @ForeignKey(
+                        entity = Competition.class,
+                        parentColumns = "id_competition",
+                        childColumns = "id_match"
+                ),
+
         })
 public class Match {
     @PrimaryKey
@@ -23,11 +29,13 @@ public class Match {
 
     private int id_stats;
     private int id_adversaire;
+    private int id_competition;
 
-    public Match(int id_match, int id_stats, int id_adversaire) {
+    public Match(int id_match, int id_stats, int id_adversaire, int id_competition) {
         this.id_match = id_match;
         this.id_stats = id_stats;
         this.id_adversaire = id_adversaire;
+        this.id_competition = id_competition;
     }
 
     public int getId_match() {
@@ -40,5 +48,9 @@ public class Match {
 
     public int getId_adversaire() {
         return id_adversaire;
+    }
+
+    public int getId_competition() {
+        return id_competition;
     }
 }

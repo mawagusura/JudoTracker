@@ -23,6 +23,9 @@ public interface AdversaireDAO {
     @Query("SELECT * FROM adversaire WHERE prenom_adversaire LIKE :prenom")
     List<Adversaire> getByPrenom(String prenom);
 
+    @Query("SELECT * FROM adversaire WHERE nom_adversaire LIKE :nom AND prenom_adversaire LIKE :prenom")
+    List<Adversaire> getByNomPrenom(String nom, String prenom);
+
     @Insert
     void insert(Adversaire adversaire);
 

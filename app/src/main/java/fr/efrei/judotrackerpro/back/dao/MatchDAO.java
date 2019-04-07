@@ -21,7 +21,10 @@ public interface MatchDAO {
     List<Match> getByIdAdversaire(int id);
 
     @Query("SELECT * FROM `match` WHERE id_stats = :id")
-    List<Match> getByIdStatistiques(int id);
+    Match getByIdStatistiques(int id);
+
+    @Query("SELECT * FROM `match` WHERE id_competition = :id")
+    List<Match> getByIdCompetition(int id);
 
     @Insert
     void insertAll(Match... matchs);

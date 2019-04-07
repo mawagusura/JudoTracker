@@ -17,8 +17,10 @@ public class LocalDatabase {
     private static ConnectorDB bdd;
 
     public LocalDatabase(Context context) {
-        this.bdd = Room.databaseBuilder(context, ConnectorDB.class, "judotracker").build();
+        this.bdd = Room.databaseBuilder(context, ConnectorDB.class, "judotracker").allowMainThreadQueries().build();
     }
+
+    // GETTERS --------------------------------------------------
 
     public List<Competition> getAllCompetitions() {
         return bdd.competitionDao().getAll();
@@ -48,6 +50,18 @@ public class LocalDatabase {
         return bdd.adversaireDao().getById(idAdversaire);
     }
 
+    public List<Adversaire> getAdversaireByNom(String nom) {
+        return bdd.adversaireDao().getByNom(nom);
+    }
+
+    public List<Adversaire> getAdversaireByPrenom(String prenom) {
+        return bdd.adversaireDao().getByNom(prenom);
+    }
+
+    public List<Adversaire> getAdversaireByPrenom(String nom, String prenom) {
+        return bdd.adversaireDao().getByNomPrenom(nom, prenom);
+    }
+
     public Adversaire getAdversaireByMatch(Match match) {
         return bdd.adversaireDao().getById(match.getId_adversaire());
     }
@@ -71,4 +85,153 @@ public class LocalDatabase {
     public List<Competition> getCompetitionsByCategorie(Categorie categorie) {
         return bdd.competitionDao().getByIdCategorie(categorie.getId_categorie());
     }
+
+    public Competition getCompetitionByMatch(Match match) {
+        return bdd.competitionDao().getById(
+                bdd.matchDao().getById(match.getId_match()).getId_competition()
+        );
+    }
+
+    public Localisation getLocalisation(int idLocalisation){
+        return bdd.localisationDao().getById(idLocalisation);
+    }
+
+    public Localisation getLocalisationCompetition(Competition compet){
+        return bdd.localisationDao().getById(bdd.competitionDao().getById(compet.getId_competition()).getId_localisation());
+    }
+
+    public Match getMatch(int idMatch) {
+        return bdd.matchDao().getById(idMatch);
+    }
+
+    public List<Match> getMatchByCompetition(Competition competition) {
+        return bdd.matchDao().getByIdCompetition(competition.getId_competition());
+    }
+
+    public Match getMatchByStatistiques(Statistiques stats) {
+        return bdd.matchDao().getByIdStatistiques(stats.getId_stats());
+    }
+
+    public Categorie getCategorieByMatch(Match match) {
+        return bdd.categorieDao().getById(
+                bdd.competitionDao().getById(
+                        match.getId_competition()
+                ).getId_categorie()
+        );
+    }
+
+    public Statistiques getStatistiques(Match match) {
+        return bdd.statistiquesDao().getById(match.getId_stats());
+    }
+
+    // UPDATERS --------------------------------------------------
+
+    public void updateAdversaire(Adversaire adversaire) {
+        bdd.adversaireDao().update(adversaire);
+    }
+
+    public void updateAdversaires(Adversaire... adversaire) {
+        bdd.adversaireDao().updateAll(adversaire);
+    }
+
+    public void updateCategorie(Categorie categorie) {
+        bdd.categorieDao().update(categorie);
+    }
+
+    public void updateCategories(Categorie... categorie) {
+        bdd.categorieDao().updateAll(categorie);
+    }
+
+    public void updateCompetition(Competition competition) {
+        bdd.competitionDao().update(competition);
+    }
+
+    public void updateCompetitions(Competition... competition) {
+        bdd.competitionDao().updateAll(competition);
+    }
+
+    public void updateLocalisation(Localisation localisation) {
+        bdd.localisationDao().update(localisation);
+    }
+
+    public void updateLocalisations(Localisation... localisation) {
+        bdd.localisationDao().updateAll(localisation);
+    }
+
+    public void updateMatch(Match match) {
+        bdd.matchDao().update(match);
+    }
+
+    public void updateMatchs(Match... match) {
+        bdd.matchDao().updateAll(match);
+    }
+
+    public void updateStatistiques(Statistiques statistiques) {
+        bdd.statistiquesDao().update(statistiques);
+    }
+
+    public void updateStatistiques(Statistiques... statistiques) {
+        bdd.statistiquesDao().updateAll(statistiques);
+    }
+
+    // DELETERS ----------------------------------------------
+
+    public void deleteMatch(Match match) {
+        bdd.matchDao().delete(match);
+    }
+
+    public void deleteCompetition(Competition compet) {
+        bdd.competitionDao().delete(compet);
+    }
+
+    // INSERTS -----------------------------------------------
+
+    public void insertAdversaire(Adversaire adv) {
+        bdd.adversaireDao().insert(adv);
+    }
+
+    public void insertAdversaireAll(Adversaire... adv) {
+        bdd.adversaireDao().insertAll(adv);
+    }
+
+    public void insertCategorie(Categorie cat) {
+        bdd.categorieDao().insert(cat);
+    }
+
+    public void insertCategorieAll(Categorie... cat) {
+        bdd.categorieDao().insertAll(cat);
+    }
+
+    public void insertCompetition(Competition compet) {
+        bdd.competitionDao().insert(compet);
+    }
+
+    public void insertCompetitionAll(Competition... compet) {
+        bdd.competitionDao().insertAll(compet);
+    }
+
+    public void insertLocalisation(Localisation localisation) {
+        bdd.localisationDao().insert(localisation);
+    }
+
+    public void insertLocalisationAll(Localisation... localisation) {
+        bdd.localisationDao().insertAll(localisation);
+    }
+
+    public void insertMatch(Match match) {
+        bdd.matchDao().insert(match);
+    }
+
+    public void insertMatchAll(Match... match) {
+        bdd.matchDao().insertAll(match);
+    }
+
+    public void insertStatistiques(Statistiques stats) {
+        bdd.statistiquesDao().insert(stats);
+    }
+
+    public void insertStatistiquesAll(Statistiques... stats) {
+        bdd.statistiquesDao().insertAll(stats);
+    }
+
 }
