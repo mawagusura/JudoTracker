@@ -14,6 +14,8 @@ import fr.efrei.judotrackerpro.back.entities.Statistiques;
 
 public class LocalDatabase {
 
+        // SINGLETON
+
     private static ConnectorDB bdd;
 
     public LocalDatabase(Context context) {
@@ -76,6 +78,10 @@ public class LocalDatabase {
 
     public Competition getCompetition(int idCompetition) {
         return bdd.competitionDao().getById(idCompetition);
+    }
+
+    public Competition getCompetitionByNom(String nom) {
+        return bdd.competitionDao().getByNom(nom);
     }
 
     public List<Competition> getCompetitionsByLocalisation(Localisation localisation) {

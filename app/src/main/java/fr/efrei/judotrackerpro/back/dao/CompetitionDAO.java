@@ -23,6 +23,9 @@ public interface CompetitionDAO {
     @Query("SELECT * FROM competition WHERE id_categorie = :id")
     List<Competition> getByIdCategorie(int id);
 
+    @Query("SELECT * FROM competition WHERE nom_competition = :nom")
+    Competition getByNom(String nom);
+
     @Insert
     void insertAll(Competition... competitions);
 
