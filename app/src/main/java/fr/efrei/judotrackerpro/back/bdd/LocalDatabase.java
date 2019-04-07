@@ -5,6 +5,8 @@ import android.content.Context;
 import java.util.List;
 
 import androidx.room.Room;
+import androidx.room.migration.Migration;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 import fr.efrei.judotrackerpro.back.entities.Adversaire;
 import fr.efrei.judotrackerpro.back.entities.Categorie;
 import fr.efrei.judotrackerpro.back.entities.Competition;
@@ -19,7 +21,7 @@ public class LocalDatabase {
     private static LocalDatabase INSTANCE = null;
 
     private LocalDatabase(Context context) {
-        this.bdd = Room.databaseBuilder(context, ConnectorDB.class, "judotracker").allowMainThreadQueries().build();
+        this.bdd = Room.databaseBuilder(context, ConnectorDB.class, "judotracker").allowMainThreadQueries().addMigrations(this.MIGRATION_1_2).build();
     }
 
     public static LocalDatabase getInstance(Context context)
@@ -247,5 +249,17 @@ public class LocalDatabase {
     public void insertStatistiquesAll(Statistiques... stats) {
         bdd.statistiquesDao().insertAll(stats);
     }
+
+
+    // Migrations
+
+    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE competition "
+                    + " ADD COLUMN nom_competition TEXT");
+        }
+    };
+
 
 }
