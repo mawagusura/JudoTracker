@@ -18,13 +18,13 @@ public interface StatistiquesDAO {
         Statistiques getById(int id);
 
         @Insert
-        void insertAll(Statistiques... stats);
+        void insertAll(List<Statistiques> stats);
 
         @Insert
         void insert(Statistiques stats);
 
         @Update
-        void updateAll(Statistiques... stats);
+        void updateAll(List<Statistiques> stats);
 
         @Update
         void update(Statistiques stats);

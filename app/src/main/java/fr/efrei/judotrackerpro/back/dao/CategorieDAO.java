@@ -28,7 +28,7 @@ public interface CategorieDAO {
     void insert(Categorie categorie);
 
     @Update
-    void updateAll(Categorie... categorie);
+    void updateAll(List<Categorie> categorie);
 
     @Update
     void update(Categorie categorie);

@@ -33,10 +33,10 @@ public interface AdversaireDAO {
     void update(Adversaire adversaire);
 
     @Insert
-    void insertAll(Adversaire... adversaires);
+    void insertAll(List<Adversaire> adversaires);
 
     @Update
-    void updateAll(Adversaire... adversaires);
+    void updateAll(List<Adversaire> adversaires);
 
     @Delete
     void delete(Adversaire adversaire);

@@ -147,7 +147,7 @@ public class LocalDatabase {
         bdd.adversaireDao().update(adversaire);
     }
 
-    public void updateAdversaires(Adversaire... adversaire) {
+    public void updateAdversaires(List<Adversaire> adversaire) {
         bdd.adversaireDao().updateAll(adversaire);
     }
 
@@ -155,7 +155,7 @@ public class LocalDatabase {
         bdd.categorieDao().update(categorie);
     }
 
-    public void updateCategories(Categorie... categorie) {
+    public void updateCategories(List<Categorie> categorie) {
         bdd.categorieDao().updateAll(categorie);
     }
 
@@ -163,7 +163,7 @@ public class LocalDatabase {
         bdd.competitionDao().update(competition);
     }
 
-    public void updateCompetitions(Competition... competition) {
+    public void updateCompetitions(List<Competition> competition) {
         bdd.competitionDao().updateAll(competition);
     }
 
@@ -171,7 +171,7 @@ public class LocalDatabase {
         bdd.localisationDao().update(localisation);
     }
 
-    public void updateLocalisations(Localisation... localisation) {
+    public void updateLocalisations(List<Localisation> localisation) {
         bdd.localisationDao().updateAll(localisation);
     }
 
@@ -179,7 +179,7 @@ public class LocalDatabase {
         bdd.matchDao().update(match);
     }
 
-    public void updateMatchs(Match... match) {
+    public void updateMatchs(List<Match> match) {
         bdd.matchDao().updateAll(match);
     }
 
@@ -187,7 +187,7 @@ public class LocalDatabase {
         bdd.statistiquesDao().update(statistiques);
     }
 
-    public void updateStatistiques(Statistiques... statistiques) {
+    public void updateStatistiques(List<Statistiques> statistiques) {
         bdd.statistiquesDao().updateAll(statistiques);
     }
 
@@ -207,7 +207,7 @@ public class LocalDatabase {
         bdd.adversaireDao().insert(adv);
     }
 
-    public void insertAdversaireAll(Adversaire... adv) {
+    public void insertAdversaireAll(List<Adversaire> adv) {
         bdd.adversaireDao().insertAll(adv);
     }
 
@@ -223,7 +223,7 @@ public class LocalDatabase {
         bdd.competitionDao().insert(compet);
     }
 
-    public void insertCompetitionAll(Competition... compet) {
+    public void insertCompetitionAll(List<Competition> compet) {
         bdd.competitionDao().insertAll(compet);
     }
 
@@ -231,7 +231,7 @@ public class LocalDatabase {
         bdd.localisationDao().insert(localisation);
     }
 
-    public void insertLocalisationAll(Localisation... localisation) {
+    public void insertLocalisationAll(List<Localisation> localisation) {
         bdd.localisationDao().insertAll(localisation);
     }
 
@@ -239,7 +239,7 @@ public class LocalDatabase {
         bdd.matchDao().insert(match);
     }
 
-    public void insertMatchAll(Match... match) {
+    public void insertMatchAll(List<Match> match) {
         bdd.matchDao().insertAll(match);
     }
 
@@ -247,7 +247,7 @@ public class LocalDatabase {
         bdd.statistiquesDao().insert(stats);
     }
 
-    public void insertStatistiquesAll(Statistiques... stats) {
+    public void insertStatistiquesAll(List<Statistiques> stats) {
         bdd.statistiquesDao().insertAll(stats);
     }
 

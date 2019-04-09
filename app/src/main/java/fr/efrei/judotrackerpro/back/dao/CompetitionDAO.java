@@ -27,13 +27,13 @@ public interface CompetitionDAO {
     Competition getByNom(String nom);
 
     @Insert
-    void insertAll(Competition... competitions);
+    void insertAll(List<Competition> competitions);
 
     @Insert
     void insert(Competition competition);
 
     @Update
-    void updateAll(Competition... competition);
+    void updateAll(List<Competition> competition);
 
     @Update
     void update(Competition competition);

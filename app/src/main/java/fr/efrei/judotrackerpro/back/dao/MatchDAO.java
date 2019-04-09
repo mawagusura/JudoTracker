@@ -27,13 +27,13 @@ public interface MatchDAO {
     List<Match> getByIdCompetition(int id);
 
     @Insert
-    void insertAll(Match... matchs);
+    void insertAll(List<Match> matchs);
 
     @Insert
     void insert(Match match);
 
     @Update
-    void updateAll(Match... matchs);
+    void updateAll(List<Match> matchs);
 
     @Update
     void update(Match match);
