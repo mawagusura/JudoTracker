@@ -14,6 +14,9 @@ import java.util.List;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import fr.efrei.judotrackerpro.adapters.CompetAdapter;
 import fr.efrei.judotrackerpro.back.bdd.LocalDatabase;
 import fr.efrei.judotrackerpro.back.entities.Categorie;
 
@@ -22,8 +25,9 @@ public class MainActivity extends AppCompatActivity {
     BottomAppBar bottomAppBar;
     FloatingActionButton floatingActionButton;
 
-    private LocalDatabase bdd;
+    private RecyclerView recycler;
 
+    private LocalDatabase bdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +46,22 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(intent);
             }
         });
+
+        recycler = findViewById(R.id.compet_recycler);
+
+        LinearLayoutManager llm = new LinearLayoutManager(MainActivity.this);
+        recycler.setLayoutManager(llm);
+
+        List<String> list = new ArrayList<>();
+        list.add("Compet 1");
+        list.add("Compet 2");
+        list.add("Compet 3");
+
+        CompetAdapter adapter = new CompetAdapter(list);
+        recycler.setAdapter(adapter);
+
         bdd = LocalDatabase.getInstance(getApplicationContext());
-        tempInsertCates();
+        //tempInsertCates();
 
     }
 
