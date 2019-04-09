@@ -1,5 +1,8 @@
 package fr.efrei.judotrackerpro.back.entities;
 
+import java.util.UUID;
+
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;

@@ -18,10 +18,10 @@ public interface CompetitionDAO {
     Competition getById(int id);
 
     @Query("SELECT * FROM competition WHERE id_localisation = :id")
-    List<Competition> getByIdLocalisation(int id);
+    List<Competition> getByIdLocalisation(Integer id);
 
     @Query("SELECT * FROM competition WHERE id_categorie = :id")
-    List<Competition> getByIdCategorie(int id);
+    List<Competition> getByIdCategorie(Integer id);
 
     @Query("SELECT * FROM competition WHERE nom_competition = :nom")
     Competition getByNom(String nom);

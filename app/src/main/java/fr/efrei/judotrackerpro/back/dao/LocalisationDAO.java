@@ -16,7 +16,7 @@ public interface LocalisationDAO {
     List<Localisation> getAll();
 
     @Query("SELECT * FROM localisation WHERE id_localisation = :id")
-    Localisation getById(int id);
+    Localisation getById(Integer id);
 
     @Insert
     void insertAll(List<Localisation> localisations);

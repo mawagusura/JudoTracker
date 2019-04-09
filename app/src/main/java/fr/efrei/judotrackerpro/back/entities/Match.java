@@ -5,22 +5,27 @@ import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import static androidx.room.ForeignKey.CASCADE;
+
 @Entity(
         foreignKeys = {
                 @ForeignKey(
                         entity = Statistiques.class,
                         parentColumns = "id_stats",
-                        childColumns = "id_match"
+                        childColumns = "id_stats",
+                        onDelete=CASCADE
                 ),
                 @ForeignKey(
                         entity = Adversaire.class,
                         parentColumns = "id_adversaire",
-                        childColumns = "id_match"
+                        childColumns = "id_adversaire",
+                        onDelete=CASCADE
                 ),
                 @ForeignKey(
                         entity = Competition.class,
                         parentColumns = "id_competition",
-                        childColumns = "id_match"
+                        childColumns = "id_competition",
+                        onDelete=CASCADE
                 ),
 
         })

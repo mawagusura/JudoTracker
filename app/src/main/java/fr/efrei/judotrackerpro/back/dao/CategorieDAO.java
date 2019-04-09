@@ -16,7 +16,7 @@ public interface CategorieDAO {
     List<Categorie> getAll();
 
     @Query("SELECT * FROM categorie WHERE id_categorie LIKE :id")
-    Categorie getById(int id);
+    Categorie getById(Integer id);
 
     @Query("SELECT * FROM categorie WHERE sexe LIKE :sexe")
     List<Categorie> getBySexe(String sexe);

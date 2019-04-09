@@ -17,7 +17,7 @@ import fr.efrei.judotrackerpro.back.entities.Match;
 import fr.efrei.judotrackerpro.back.entities.Statistiques;
 import fr.efrei.judotrackerpro.back.utilities.Converters;
 
-@Database(entities = {Adversaire.class, Categorie.class, Competition.class, Localisation.class, Match.class, Statistiques.class}, version = 2,  exportSchema = false)
+@Database(entities = {Adversaire.class, Categorie.class, Competition.class, Localisation.class, Match.class, Statistiques.class}, version = 5,  exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class ConnectorDB extends RoomDatabase {
 

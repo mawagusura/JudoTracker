@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         recycler.setAdapter(adapter);
 
         bdd = LocalDatabase.getInstance(getApplicationContext());
-        //tempInsertCates();
+        tempInsertCates();
 
     }
 

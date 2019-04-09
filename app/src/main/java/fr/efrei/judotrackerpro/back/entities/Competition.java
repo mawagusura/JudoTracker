@@ -1,22 +1,27 @@
 package fr.efrei.judotrackerpro.back.entities;
 
 import java.util.Date;
+
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+
+import static androidx.room.ForeignKey.CASCADE;
 
 @Entity(
     foreignKeys = {
         @ForeignKey(
             entity = Categorie.class,
             parentColumns = "id_categorie",
-            childColumns = "id_competition"
+            childColumns = "id_categorie",
+                onDelete=CASCADE
         ),
         @ForeignKey(
             entity = Localisation.class,
             parentColumns = "id_localisation",
-            childColumns = "id_competition"
+            childColumns = "id_localisation",
+            onDelete=CASCADE
         )
     })
 
