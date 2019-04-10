@@ -22,10 +22,10 @@ public interface CategorieDAO {
     List<Categorie> getBySexe(String sexe);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(List<Categorie> categories);
+    long[] insertAll(List<Categorie> categories);
 
     @Insert
-    void insert(Categorie categorie);
+    long insert(Categorie categorie);
 
     @Update
     void updateAll(List<Categorie> categorie);

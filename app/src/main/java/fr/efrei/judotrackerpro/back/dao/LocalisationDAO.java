@@ -19,10 +19,10 @@ public interface LocalisationDAO {
     Localisation getById(Integer id);
 
     @Insert
-    void insertAll(List<Localisation> localisations);
+    long[] insertAll(List<Localisation> localisations);
 
     @Insert
-    void insert(Localisation localisation);
+    long insert(Localisation localisation);
 
     @Update
     void updateAll(List<Localisation> localisations);

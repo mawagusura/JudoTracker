@@ -27,10 +27,10 @@ public interface MatchDAO {
     List<Match> getByIdCompetition(int id);
 
     @Insert
-    void insertAll(List<Match> matchs);
+    long[] insertAll(List<Match> matchs);
 
     @Insert
-    void insert(Match match);
+    long insert(Match match);
 
     @Update
     void updateAll(List<Match> matchs);
