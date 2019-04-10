@@ -21,4 +21,7 @@
     <string name="homme">Homme</string>
     <string name="femme">Femme</string>
 
+    <string name="edit_compet">Modifier</string>
+    <string name="del_compet">Supprimer</string>
+
 </resources>

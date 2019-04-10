@@ -1,8 +1,10 @@
 package fr.efrei.judotrackerpro;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -10,10 +12,14 @@ import fr.efrei.judotrackerpro.back.bdd.LocalDatabase;
 import fr.efrei.judotrackerpro.back.entities.Categorie;
 import fr.efrei.judotrackerpro.back.entities.Competition;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
+import androidx.appcompat.widget.Toolbar;
 
 public class CompetitionActivity extends AppCompatActivity {
 
@@ -64,6 +70,7 @@ public class CompetitionActivity extends AppCompatActivity {
         }
     };
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +83,6 @@ public class CompetitionActivity extends AppCompatActivity {
             competition = LocalDatabase.getInstance(getApplicationContext()).getCompetition(competID);
             TextView name = findViewById(R.id.compet_name);
             name.setText(competition.getNom_competition());
-
 
         }
 
@@ -95,6 +101,39 @@ public class CompetitionActivity extends AppCompatActivity {
             ft.add(R.id.frameCompet, competStatsFragment);
             ft.commit();
         }
+
+        Toolbar appBar = findViewById(R.id.compet_bar);
+        setSupportActionBar(appBar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.compet_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.edit_compet:
+                Intent i = new Intent(CompetitionActivity.this, EditCompetActivity.class);
+                Bundle b = new Bundle();
+                b.putInt("ID",competition.getId_competition());
+                i.putExtras(b);
+                finish();
+                startActivity(i);
+                return true;
+            case R.id.del_compet:
+                LocalDatabase.getInstance(getApplicationContext()).deleteCompetition(competition);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
 }

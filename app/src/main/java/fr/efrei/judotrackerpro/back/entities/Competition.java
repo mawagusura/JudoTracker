@@ -95,4 +95,12 @@ public class Competition {
     public void setLocalisation(Localisation localisation) {
         this.id_localisation = localisation.getId_localisation();
     }
+
+    public void setNom_competition(String nom_competition){
+        this.nom_competition = nom_competition;
+    }
+
+    public void setDate_competition(Date date_competition){
+        this.date_competition = date_competition;
+    }
 }

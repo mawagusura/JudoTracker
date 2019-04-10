@@ -8,10 +8,11 @@
     tools:context=".CompetitionActivity"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/compet_bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:background="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/frameCompet"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -20,9 +21,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
-            android:layout_gravity="center"/>
+            android:textSize="30sp"
+            android:textColor="@android:color/black"/>
 
-    </com.google.android.material.appbar.AppBarLayout>
+
+    </androidx.appcompat.widget.Toolbar>
 
     <FrameLayout
         android:id="@+id/frameCompet"

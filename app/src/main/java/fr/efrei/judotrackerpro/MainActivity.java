@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         recycler.setLayoutManager(llm);
 
         bdd = LocalDatabase.getInstance(getApplicationContext());
-        populateDB();
+        //populateDB();
 
         //tempInsertCates();
 

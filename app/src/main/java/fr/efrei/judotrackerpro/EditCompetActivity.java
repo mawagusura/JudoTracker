@@ -53,6 +53,9 @@ public class EditCompetActivity extends AppCompatActivity implements DatePickerD
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_compet);
 
+        bdd = LocalDatabase.getInstance(getApplicationContext());
+
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if(bundle!=null){
@@ -60,7 +63,6 @@ public class EditCompetActivity extends AppCompatActivity implements DatePickerD
             competition = bdd.getCompetition(competID);
         }
 
-        bdd = LocalDatabase.getInstance(getApplicationContext());
 
         name = findViewById(R.id.compet_name);
         edit_name = findViewById(R.id.edit_name);
@@ -129,8 +131,21 @@ public class EditCompetActivity extends AppCompatActivity implements DatePickerD
                         e.printStackTrace();
                     }
 
-                    Competition compet = new Competition(name, cate, date);
-                    long competID = bdd.insertCompetition(compet);
+                    long competID;
+
+                    if(competition==null){
+                        Competition compet = new Competition(name, cate, date);
+                        competID = bdd.insertCompetition(compet);
+                    }else{
+                         competition.setNom_competition(name);
+                         competition.setDate_competition(date);
+                         competition.setCategorie(cate);
+
+                         competID = competition.getId_competition();
+
+                         bdd.updateCompetition(competition);
+                    }
+
 
                     Intent i = new Intent(EditCompetActivity.this,CompetitionActivity.class);
                     Bundle b = new Bundle();
