@@ -217,8 +217,8 @@ public class LocalDatabase {
         bdd.categorieDao().insertAll(categories);
     }
 
-    public void insertCompetition(Competition compet) {
-        bdd.competitionDao().insert(compet);
+    public long insertCompetition(Competition compet) {
+        return bdd.competitionDao().insert(compet);
     }
 
     public void insertCompetitionAll(List<Competition> compet) {

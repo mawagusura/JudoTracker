@@ -1,5 +1,7 @@
 package fr.efrei.judotrackerpro.adapters;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +12,16 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+import fr.efrei.judotrackerpro.CompetitionActivity;
 import fr.efrei.judotrackerpro.R;
+import fr.efrei.judotrackerpro.back.entities.Competition;
 
 public class CompetAdapter extends RecyclerView.Adapter<CompetAdapter.CompetViewHolder>{
 
-    List<String> list;
+    List<Competition> list;
 
-    public CompetAdapter(List<String> list){
+
+    public CompetAdapter(List<Competition> list){
         this.list = list;
     }
 
@@ -26,13 +31,14 @@ public class CompetAdapter extends RecyclerView.Adapter<CompetAdapter.CompetView
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.match_card, parent, false);
         CompetAdapter.CompetViewHolder mvh = new CompetAdapter.CompetViewHolder(view);
-
+        view.setOnClickListener(mvh);
         return mvh;
     }
 
     @Override
     public void onBindViewHolder(@NonNull CompetViewHolder holder, int position) {
-        holder.getText().setText(list.get(position));
+        holder.text.setText(list.get(position).getNom_competition());
+        holder.id = list.get(position).getId_competition();
     }
 
     @Override
@@ -46,17 +52,25 @@ public class CompetAdapter extends RecyclerView.Adapter<CompetAdapter.CompetView
     }
 
 
-    class CompetViewHolder extends RecyclerView.ViewHolder {
+    class CompetViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         CardView cv;
         TextView text;
+
+        Integer id;
 
         CompetViewHolder(View itemView){
             super(itemView);
             text = itemView.findViewById(R.id.TEMP_id_card);
         }
 
-        TextView getText(){
-            return text;
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(view.getContext(), CompetitionActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("ID",id);
+            i.putExtras(bundle);
+            view.getContext().startActivity(i);
         }
     }
+
 }

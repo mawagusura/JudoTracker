@@ -33,7 +33,7 @@ public interface AdversaireDAO {
     void update(Adversaire adversaire);
 
     @Insert
-    long insertAll(List<Adversaire> adversaires);
+    long[] insertAll(List<Adversaire> adversaires);
 
     @Update
     void updateAll(List<Adversaire> adversaires);

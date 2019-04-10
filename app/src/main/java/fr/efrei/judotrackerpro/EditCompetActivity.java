@@ -38,13 +38,13 @@ public class EditCompetActivity extends AppCompatActivity implements DatePickerD
     private Switch edit_sex;
     private Spinner edit_cate;
 
-    private Integer competID;
-
     private Button validate_btn;
 
     private DatePickerDialog datePickerDialog;
 
     private LocalDatabase bdd;
+
+    private Competition competition;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -55,7 +55,8 @@ public class EditCompetActivity extends AppCompatActivity implements DatePickerD
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if(bundle!=null){
-            competID = bundle.getInt("ID");
+            Integer competID = bundle.getInt("ID");
+            competition = bdd.getCompetition(competID);
         }
 
         bdd = LocalDatabase.getInstance(getApplicationContext());
@@ -75,11 +76,17 @@ public class EditCompetActivity extends AppCompatActivity implements DatePickerD
 
         datePickerDialog = new DatePickerDialog(EditCompetActivity.this, this, 1, 1, 2019);
 
-        if (competID == null) {
+        if (competition == null) {
             name.setText("Nouvelle Compétition");
         }
         else{
-
+            name.setText(competition.getNom_competition());
+            edit_name.setText(competition.getNom_competition());
+            Categorie cate = bdd.getCategorie(competition.getId_categorie());
+            edit_sex.setChecked(cate.getSexe().equals("femme"));
+            int i = bdd.getAllCategories().indexOf(cate);
+            edit_cate.setSelection(i);
+            edit_date.setText(competition.getDate_competition().toString());
         }
 
         edit_sex.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -116,7 +123,14 @@ public class EditCompetActivity extends AppCompatActivity implements DatePickerD
 
                 Competition compet = new Competition(name, cate, date);
 
-                bdd.insertCompetition(compet);
+                long competID = bdd.insertCompetition(compet);
+
+                Intent i = new Intent(EditCompetActivity.this,CompetitionActivity.class);
+                Bundle b = new Bundle();
+                b.putInt("ID",(int)competID);
+                i.putExtras(b);
+                finish();
+                startActivity(i);
             }
         });
 

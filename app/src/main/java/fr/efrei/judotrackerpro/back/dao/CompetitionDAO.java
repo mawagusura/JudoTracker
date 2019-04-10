@@ -30,7 +30,7 @@ public interface CompetitionDAO {
     long[] insertAll(List<Competition> competitions);
 
     @Insert
-    long[] insert(Competition competition);
+    long insert(Competition competition);
 
     @Update
     void updateAll(List<Competition> competition);

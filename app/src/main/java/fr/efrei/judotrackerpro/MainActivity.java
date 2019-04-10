@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import fr.efrei.judotrackerpro.adapters.CompetAdapter;
 import fr.efrei.judotrackerpro.back.bdd.LocalDatabase;
 import fr.efrei.judotrackerpro.back.entities.Categorie;
+import fr.efrei.judotrackerpro.back.entities.Competition;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,11 +59,17 @@ public class MainActivity extends AppCompatActivity {
         list.add("Compet 2");
         list.add("Compet 3");
 
-        CompetAdapter adapter = new CompetAdapter(list);
-        recycler.setAdapter(adapter);
-
         bdd = LocalDatabase.getInstance(getApplicationContext());
-        tempInsertCates();
+
+        List<Competition> compets = bdd.getAllCompetitions();
+        if(!compets.isEmpty()){
+            CompetAdapter adapter = new CompetAdapter(compets);
+            recycler.setAdapter(adapter);
+        }
+        else{
+            Toast.makeText(this, "Aucune coméptition n'existe pour le moement.", Toast.LENGTH_LONG);
+        }
+        //tempInsertCates();
 
     }
 
