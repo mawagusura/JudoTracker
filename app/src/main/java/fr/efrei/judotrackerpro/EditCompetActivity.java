@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -74,7 +75,7 @@ public class EditCompetActivity extends AppCompatActivity implements DatePickerD
             }
         });
 
-        datePickerDialog = new DatePickerDialog(EditCompetActivity.this, this, 1, 1, 2019);
+        datePickerDialog = new DatePickerDialog(EditCompetActivity.this, this, 2019, 4, 1);
 
         if (competition == null) {
             name.setText("Nouvelle Compétition");
@@ -113,24 +114,31 @@ public class EditCompetActivity extends AppCompatActivity implements DatePickerD
             public void onClick(View view) {
                 String name = edit_name.getText().toString();
                 SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.FRANCE);
-                Date date = new Date();
-                try {
-                    date = dateFormatter.parse(edit_date.getText().toString());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+
                 Categorie cate = (Categorie) edit_cate.getSelectedItem();
 
-                Competition compet = new Competition(name, cate, date);
+                if(name.isEmpty() || cate==null || edit_date.getText().toString().isEmpty()){
+                    Toast.makeText(EditCompetActivity.this,"Veuillez rentrer tous les champs.", Toast.LENGTH_LONG).show();
+                }
+                else{
 
-                long competID = bdd.insertCompetition(compet);
+                    Date date = new Date();
+                    try {
+                        date = dateFormatter.parse(edit_date.getText().toString());
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
 
-                Intent i = new Intent(EditCompetActivity.this,CompetitionActivity.class);
-                Bundle b = new Bundle();
-                b.putInt("ID",(int)competID);
-                i.putExtras(b);
-                finish();
-                startActivity(i);
+                    Competition compet = new Competition(name, cate, date);
+                    long competID = bdd.insertCompetition(compet);
+
+                    Intent i = new Intent(EditCompetActivity.this,CompetitionActivity.class);
+                    Bundle b = new Bundle();
+                    b.putInt("ID",(int)competID);
+                    i.putExtras(b);
+                    finish();
+                    startActivity(i);
+                }
             }
         });
 

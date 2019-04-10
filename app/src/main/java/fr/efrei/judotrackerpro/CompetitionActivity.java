@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import fr.efrei.judotrackerpro.back.bdd.LocalDatabase;
+import fr.efrei.judotrackerpro.back.entities.Categorie;
 import fr.efrei.judotrackerpro.back.entities.Competition;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -75,12 +76,15 @@ public class CompetitionActivity extends AppCompatActivity {
             competition = LocalDatabase.getInstance(getApplicationContext()).getCompetition(competID);
             TextView name = findViewById(R.id.compet_name);
             name.setText(competition.getNom_competition());
+
+
         }
 
         mapFragment = new MapFragment();
         matchesFragment = new MatchesFragment();
         photoFragment = new PhotoFragment();
         competStatsFragment = new CompetStatsFragment();
+        competStatsFragment.setCompet(competition);
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

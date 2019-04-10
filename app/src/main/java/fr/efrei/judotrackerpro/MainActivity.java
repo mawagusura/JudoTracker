@@ -54,12 +54,15 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(MainActivity.this);
         recycler.setLayoutManager(llm);
 
-        List<String> list = new ArrayList<>();
-        list.add("Compet 1");
-        list.add("Compet 2");
-        list.add("Compet 3");
-
         bdd = LocalDatabase.getInstance(getApplicationContext());
+
+        //tempInsertCates();
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         List<Competition> compets = bdd.getAllCompetitions();
         if(!compets.isEmpty()){
@@ -67,12 +70,9 @@ public class MainActivity extends AppCompatActivity {
             recycler.setAdapter(adapter);
         }
         else{
-            Toast.makeText(this, "Aucune coméptition n'existe pour le moement.", Toast.LENGTH_LONG);
+            Toast.makeText(this, "Aucune coméptition n'existe pour le moment.", Toast.LENGTH_LONG).show();
         }
-        //tempInsertCates();
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
