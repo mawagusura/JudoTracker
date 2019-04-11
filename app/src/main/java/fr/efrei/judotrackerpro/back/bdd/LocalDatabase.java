@@ -19,7 +19,7 @@ public class LocalDatabase {
     private static LocalDatabase INSTANCE = null;
 
     private LocalDatabase(Context context) {
-        this.bdd = Room.databaseBuilder(context, ConnectorDB.class, "judotracker2").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+        this.bdd = Room.databaseBuilder(context, ConnectorDB.class, "judotracker3").fallbackToDestructiveMigration().allowMainThreadQueries().build();
     }
 
     public static LocalDatabase getInstance(Context context)

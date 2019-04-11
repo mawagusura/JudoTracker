@@ -1,5 +1,6 @@
 package fr.efrei.judotrackerpro.adapters;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,11 +17,15 @@ import fr.efrei.judotrackerpro.CompetitionActivity;
 import fr.efrei.judotrackerpro.MatchActivity;
 import fr.efrei.judotrackerpro.R;
 import fr.efrei.judotrackerpro.back.bdd.LocalDatabase;
+import fr.efrei.judotrackerpro.back.entities.Adversaire;
 import fr.efrei.judotrackerpro.back.entities.Match;
+import fr.efrei.judotrackerpro.back.entities.Statistiques;
 
 public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchViewHolder> {
 
     List<Match> list;
+
+    public Context context;
 
     public MatchesAdapter(List<Match> list){
         this.list = list;
@@ -39,8 +44,25 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchVie
 
     @Override
     public void onBindViewHolder(@NonNull MatchViewHolder holder, int position) {
-        holder.text.setText(Integer.toString(list.get(position).getId_match()));
+
+        Adversaire adv = LocalDatabase.getInstance(context).getAdversaire(list.get(position).getId_adversaire());
+        holder.text.setText("Moi VS "+adv.prenom_adversaire+" "+adv.getNomAdversaire());
         holder.id = list.get(position).getId_match();
+        Integer id_stats = list.get(position).getId_stats();
+        Statistiques stats = LocalDatabase.getInstance(context).getStatistiques(id_stats);
+        if(stats!=null ){
+            int score_ut = stats.getIpponsUtilisateur()*100 + stats.getWazaariUtilisateur()*10+stats.getYukoUtilisateur();
+            int score_adv = stats.getIpponsAdv()*100 + stats.getWazaariAdv()*10 + stats.getYukoAdv();
+
+            if(score_adv>score_ut){
+
+                holder.cv.setCardBackgroundColor(context.getResources().getColor(R.color.red));
+                holder.text.setTextColor(context.getResources().getColor(R.color.common_google_signin_btn_text_light));
+            }
+            else{
+                holder.cv.setCardBackgroundColor(context.getResources().getColor(R.color.green));
+            }
+        }
     }
 
     @Override
@@ -63,6 +85,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchVie
         MatchViewHolder(View itemView){
             super(itemView);
             text = itemView.findViewById(R.id.TEMP_id_card);
+            cv = itemView.findViewById(R.id.match_card);
         }
 
         @Override

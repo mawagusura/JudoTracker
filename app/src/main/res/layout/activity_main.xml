@@ -12,11 +12,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/compet_recycler"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_margin="16dp"
-        android:padding="5dp"
+        android:layout_height="400dp"
         android:layout_gravity="center"
-        />
+        android:layout_margin="16dp"
+        android:padding="5dp" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"

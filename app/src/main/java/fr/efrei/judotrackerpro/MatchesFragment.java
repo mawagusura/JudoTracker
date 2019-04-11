@@ -54,15 +54,7 @@ public class MatchesFragment extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(llm);
 
-        List<Match> matches = LocalDatabase.getInstance(getContext()).getMatchByCompetition(competition);
 
-        if(! matches.isEmpty()){
-            MatchesAdapter adapter = new MatchesAdapter(matches);
-
-            //MatchesAdapter adapter = new MatchesAdapter(list);
-
-            recyclerView.setAdapter(adapter);
-        }
         
 
         this.addButton = (FloatingActionButton) view.findViewById(R.id.addButton);
@@ -79,6 +71,21 @@ public class MatchesFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        List<Match> matches = LocalDatabase.getInstance(getContext()).getMatchByCompetition(competition);
+
+        if(! matches.isEmpty()){
+            MatchesAdapter adapter = new MatchesAdapter(matches);
+
+            //MatchesAdapter adapter = new MatchesAdapter(list);
+            adapter.context = getContext();
+            recyclerView.setAdapter(adapter);
+        }
     }
 
     public void onButtonPressed(Uri uri) {
