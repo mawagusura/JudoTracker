@@ -88,45 +88,50 @@ public class EditMatchActivity extends AppCompatActivity {
                 ) {
                     Toast.makeText(EditMatchActivity.this,"Veuillez rentrer tous les champs.", Toast.LENGTH_LONG).show();
                 }
+                else {
 
-                String nom_adversaire = nom_adv.getText().toString();
-                String prenom_adversaire = prenom_adv.getText().toString();
+                    String nom_adversaire = nom_adv.getText().toString();
+                    String prenom_adversaire = prenom_adv.getText().toString();
 
-                // Création de l'adversaire ou récupération si existe
-                Adversaire adversaire;
-                if (bdd.getAdversaireByNomPrenom(nom_adversaire, prenom_adversaire).isEmpty()) {
-                    adversaire = new Adversaire(nom_adversaire, prenom_adversaire);
-                    long id_adv = bdd.insertAdversaire(adversaire);
+                    // Création de l'adversaire ou récupération si existe
+                    Adversaire adversaire;
+                    if (bdd.getAdversaireByNomPrenom(nom_adversaire, prenom_adversaire).isEmpty()) {
+                        adversaire = new Adversaire(nom_adversaire, prenom_adversaire);
+                        long id_adv = bdd.insertAdversaire(adversaire);
+                    }
+                    adversaire = bdd.getAdversaireByNomPrenom(nom_adversaire, prenom_adversaire).get(0);
+
+                    // Création des statistiques du match
+
+                    int duree = Integer.parseInt(duree_match_min.getText().toString()) * 60
+                            + Integer.parseInt(duree_match_sec.getText().toString());
+                    int ipponsUtilisateur = Integer.parseInt(ippons_user.getText().toString());
+                    int wazaarisUtilisateur = Integer.parseInt(wazaaris_user.getText().toString());
+                    int yukosUtilisateur = Integer.parseInt(yukos_user.getText().toString());
+                    int ipponsAdv = Integer.parseInt(ippons_adv.getText().toString());
+                    int wazaarisAdv = Integer.parseInt(wazaaris_adv.getText().toString());
+                    int yukosAdv = Integer.parseInt(yukos_adv.getText().toString());
+                    int penalitesUtilisateur = Integer.parseInt(penalites_user.getText().toString());
+                    int penalitesAdv = Integer.parseInt(penalites_adv.getText().toString());
+
+                    Statistiques statistiques = new Statistiques(duree, ipponsUtilisateur, wazaarisUtilisateur,
+                            yukosUtilisateur, ipponsAdv, wazaarisAdv, yukosAdv, penalitesUtilisateur, penalitesAdv);
+                    long id_statistiques = bdd.insertStatistiques(statistiques);
+                    
+
+                    // Création du match
+                    Match match = new Match(EditMatchActivity.this.competition, adversaire, statistiques);
+                    long idMatch = bdd.insertMatch(match);
+
+                    // Lancement affichage match
+                    Intent i = new Intent(EditMatchActivity.this, MatchActivity.class);
+                    Bundle b = new Bundle();
+                    b.putInt("id_match", (int) idMatch);
+                    i.putExtras(b);
+                    finish();
+                    startActivity(i);
+
                 }
-                adversaire = bdd.getAdversaireByNomPrenom(nom_adversaire, prenom_adversaire).get(0);
-
-                // Création des statistiques du match
-                int duree = Integer.getInteger(duree_match_min.getText().toString())*60
-                        + Integer.getInteger(duree_match_sec.getText().toString());
-                int ipponsUtilisateur = Integer.getInteger(ippons_user.getText().toString());
-                int wazaarisUtilisateur = Integer.getInteger(wazaaris_user.getText().toString());
-                int yukosUtilisateur = Integer.getInteger(yukos_user.getText().toString());
-                int ipponsAdv = Integer.getInteger(ippons_adv.getText().toString());
-                int wazaarisAdv = Integer.getInteger(wazaaris_adv.getText().toString());
-                int yukosAdv = Integer.getInteger(yukos_adv.getText().toString());
-                int penalitesUtilisateur = Integer.getInteger(penalites_user.getText().toString());
-                int penalitesAdv = Integer.getInteger(penalites_adv.getText().toString());
-
-                Statistiques statistiques = new Statistiques(duree, ipponsUtilisateur, wazaarisUtilisateur,
-                        yukosUtilisateur, ipponsAdv, wazaarisAdv, yukosAdv, penalitesUtilisateur, penalitesAdv);
-                long id_statistiques = bdd.insertStatistiques(statistiques);
-
-                // Création du match
-                Match match = new Match(EditMatchActivity.this.competition, adversaire, statistiques);
-                long idMatch = bdd.insertMatch(match);
-
-                // Lancement affichage match
-                Intent i = new Intent(EditMatchActivity.this,MatchActivity.class);
-                Bundle b = new Bundle();
-                b.putInt("id_match",(int) idMatch);
-                i.putExtras(b);
-                finish();
-                startActivity(i);
             }
         });
 
