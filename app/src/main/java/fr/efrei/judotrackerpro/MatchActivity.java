@@ -67,16 +67,16 @@ public class MatchActivity extends AppCompatActivity {
         // Remplissage de tous les champs
         nom_adv.setText(adversaire.getNomAdversaire());
         prenom_adv.setText(adversaire.getPrenomAdversaire());
-        duree_match_min.setText(stats.getDuree_match() / 60);
-        duree_match_sec.setText(stats.getDuree_match() % 60);
-        ippons_adv.setText(stats.getIpponsAdv());
-        wazaaris_adv.setText(stats.getWazaariAdv());
-        yukos_adv.setText(stats.getYukoAdv());
-        ippons_user.setText(stats.getIpponsUtilisateur());
-        wazaaris_user.setText(stats.getWazaariUtilisateur());
-        yukos_user.setText(stats.getYukoUtilisateur());
-        penalites_adv.setText(stats.getPenalitesAdv());
-        penalites_user.setText(stats.getPenalitesUtilisateur());
+        duree_match_min.setText(Integer.toString(stats.getDuree_match() / 60));
+        duree_match_sec.setText(Integer.toString(stats.getDuree_match() % 60));
+        ippons_adv.setText(Integer.toString(stats.getIpponsAdv()));
+        wazaaris_adv.setText(Integer.toString(stats.getWazaariAdv()));
+        yukos_adv.setText(Integer.toString(stats.getYukoAdv()));
+        ippons_user.setText(Integer.toString(stats.getIpponsUtilisateur()));
+        wazaaris_user.setText(Integer.toString(stats.getWazaariUtilisateur()));
+        yukos_user.setText(Integer.toString(stats.getYukoUtilisateur()));
+        penalites_adv.setText(Integer.toString(stats.getPenalitesAdv()));
+        penalites_user.setText(Integer.toString(stats.getPenalitesUtilisateur()));
 
 
     }

@@ -139,6 +139,10 @@ public class LocalDatabase {
         return bdd.statistiquesDao().getById(match.getId_stats());
     }
 
+    public Statistiques getStatistiques(Integer id_stats) {
+        return bdd.statistiquesDao().getById(id_stats);
+    }
+
     // UPDATERS --------------------------------------------------
 
     public void updateAdversaire(Adversaire adversaire) {

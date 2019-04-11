@@ -117,6 +117,7 @@ public class EditMatchActivity extends AppCompatActivity {
                     Statistiques statistiques = new Statistiques(duree, ipponsUtilisateur, wazaarisUtilisateur,
                             yukosUtilisateur, ipponsAdv, wazaarisAdv, yukosAdv, penalitesUtilisateur, penalitesAdv);
                     long id_statistiques = bdd.insertStatistiques(statistiques);
+                    statistiques = bdd.getStatistiques((int) id_statistiques);
                     
 
                     // Création du match

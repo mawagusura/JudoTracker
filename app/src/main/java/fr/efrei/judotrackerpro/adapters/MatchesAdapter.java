@@ -39,7 +39,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchVie
 
     @Override
     public void onBindViewHolder(@NonNull MatchViewHolder holder, int position) {
-        holder.text.setText(list.get(position).getId_match());
+        holder.text.setText(Integer.toString(list.get(position).getId_match()));
         holder.id = list.get(position).getId_match();
     }
 
