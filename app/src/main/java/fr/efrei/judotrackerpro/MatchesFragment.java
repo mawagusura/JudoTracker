@@ -59,11 +59,14 @@ public class MatchesFragment extends Fragment {
 
         List<Match> matches = LocalDatabase.getInstance(getContext()).getMatchByCompetition(competition);
 
-        MatchesAdapter adapter = new MatchesAdapter(matches);
+        if(! matches.isEmpty()){
+            MatchesAdapter adapter = new MatchesAdapter(matches);
 
-        //MatchesAdapter adapter = new MatchesAdapter(list);
+            //MatchesAdapter adapter = new MatchesAdapter(list);
 
-        recyclerView.setAdapter(adapter);
+            recyclerView.setAdapter(adapter);
+        }
+        
 
         return view;
     }

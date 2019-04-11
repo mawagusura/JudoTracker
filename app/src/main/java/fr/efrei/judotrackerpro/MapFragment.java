@@ -5,6 +5,9 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import fr.efrei.judotrackerpro.back.bdd.LocalDatabase;
+import fr.efrei.judotrackerpro.back.entities.Competition;
+import fr.efrei.judotrackerpro.back.entities.Localisation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,8 +32,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private TextView lat;
     private TextView lon;
 
+    private Competition competition;
+
     public MapFragment() {
         // Required empty public constructor
+    }
+
+    public void setCompetition(Competition competition){
+        this.competition = competition;
     }
 
     @Override
@@ -65,6 +74,24 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap){
         map = googleMap;
 
+        if(competition!=null){
+            if(actualMarker!=null){
+                actualMarker.remove();
+            }
+
+            Localisation loc = LocalDatabase.getInstance(getContext()).getLocalisation(competition.getId_localisation());
+
+            if(loc!=null) {
+                actualMarker = map.addMarker(new MarkerOptions()
+                        .position(new LatLng(loc.getLatitude(), loc.getLongitude()))
+                        .title("lat :" + loc.getLatitude() + ", long :" + loc.getLongitude())
+                );
+
+                lat.setText(String.valueOf(loc.getLatitude()));
+                lon.setText(String.valueOf(loc.getLongitude()));
+            }
+        }
+
         map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
@@ -78,6 +105,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                 lat.setText(String.valueOf(latLng.latitude));
                 lon.setText(String.valueOf(latLng.longitude));
+
+
+                LocalDatabase bdd = LocalDatabase.getInstance(getContext());
+
+                Localisation loc = new Localisation(latLng.longitude, latLng.latitude);
+
+                long id = bdd.insertLocalisation(loc);
+                competition.setLocalisation(bdd.getLocalisation((int)id));
+                LocalDatabase.getInstance(getContext()).updateCompetition(competition);
             }
 
         });

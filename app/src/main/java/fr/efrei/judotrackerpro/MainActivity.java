@@ -160,5 +160,24 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void tempInsertCates(){
+        List<Categorie> cates = new ArrayList<>();
+        cates.add(new Categorie(1,"Femme","-48kg"));
+        cates.add(new Categorie(2,"Femme","-52kg"));
+        cates.add(new Categorie(3,"Femme","-57kg"));
+        cates.add(new Categorie(4,"Femme","-63kg"));
+        cates.add(new Categorie(5,"Femme","-70kg"));
+        cates.add(new Categorie(6,"Femme","-78kg"));
+        cates.add(new Categorie(7,"Femme","+78kg"));
+        cates.add(new Categorie(8,"Homme","-60kg"));
+        cates.add(new Categorie(9,"Homme","-66kg"));
+        cates.add(new Categorie(10,"Homme","-73kg"));
+        cates.add(new Categorie(11,"Homme","-81kg"));
+        cates.add(new Categorie(12,"Homme","-90kg"));
+        cates.add(new Categorie(13,"Homme","-100kg"));
+        cates.add(new Categorie(14,"Homme","+100kg"));
+        bdd.insertCategorieAll(cates);
+    }
+
 
 }

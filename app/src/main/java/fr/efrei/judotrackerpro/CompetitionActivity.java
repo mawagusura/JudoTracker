@@ -100,6 +100,7 @@ public class CompetitionActivity extends AppCompatActivity {
         }
 
         mapFragment = new MapFragment();
+        mapFragment.setCompetition(competition);
         matchesFragment = new MatchesFragment();
         matchesFragment.setCompetition(competition);
         competStatsFragment = new CompetStatsFragment();
