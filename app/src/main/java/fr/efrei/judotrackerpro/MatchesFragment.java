@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import fr.efrei.judotrackerpro.adapters.MatchesAdapter;
+import fr.efrei.judotrackerpro.back.bdd.LocalDatabase;
+import fr.efrei.judotrackerpro.back.entities.Competition;
+import fr.efrei.judotrackerpro.back.entities.Match;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,10 +24,15 @@ public class MatchesFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     private RecyclerView recyclerView;
 
+    private Competition competition;
+
     public MatchesFragment() {
         // Required empty public constructor
     }
 
+    public void setCompetition(Competition compet){
+        competition = compet;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,12 +50,19 @@ public class MatchesFragment extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(llm);
 
+        /*
         List<String> list = new ArrayList<>();
         list.add("Test 1");
         list.add("Test 2");
         list.add("Test 3");
+        */
 
-        MatchesAdapter adapter = new MatchesAdapter(list);
+        List<Match> matches = LocalDatabase.getInstance(getContext()).getMatchByCompetition(competition);
+
+        MatchesAdapter adapter = new MatchesAdapter(matches);
+
+        //MatchesAdapter adapter = new MatchesAdapter(list);
+
         recyclerView.setAdapter(adapter);
 
         return view;
