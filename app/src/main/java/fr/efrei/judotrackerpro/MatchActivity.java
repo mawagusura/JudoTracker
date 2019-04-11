@@ -46,11 +46,6 @@ public class MatchActivity extends AppCompatActivity {
             if (matchId != null) {
                 this.match = bdd.getMatch(matchId);
             }
-
-            Integer competId = bundle.getInt("id_competition");
-            if (matchId != null) {
-                this.competition = bdd.getCompetition(competId);
-            }
         }
 
         Adversaire adversaire = bdd.getAdversaire(match.getId_adversaire());

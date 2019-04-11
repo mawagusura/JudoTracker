@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import fr.efrei.judotrackerpro.CompetitionActivity;
 import fr.efrei.judotrackerpro.MatchActivity;
 import fr.efrei.judotrackerpro.R;
+import fr.efrei.judotrackerpro.back.bdd.LocalDatabase;
 import fr.efrei.judotrackerpro.back.entities.Match;
 
 public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchViewHolder> {
@@ -68,7 +69,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchVie
         public void onClick(View view) {
             Intent i = new Intent(view.getContext(), MatchActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putInt("ID",id);
+            bundle.putInt("id_match",id);
             i.putExtras(bundle);
             view.getContext().startActivity(i);
         }
