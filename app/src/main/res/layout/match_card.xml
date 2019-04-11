@@ -12,7 +12,8 @@
         <TextView
             android:id="@+id/TEMP_id_card"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:padding="15dp" />
 
     </com.google.android.material.card.MaterialCardView>
 

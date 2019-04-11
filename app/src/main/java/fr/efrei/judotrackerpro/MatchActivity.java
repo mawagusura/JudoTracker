@@ -1,6 +1,7 @@
 package fr.efrei.judotrackerpro;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import fr.efrei.judotrackerpro.back.bdd.LocalDatabase;
 import fr.efrei.judotrackerpro.back.entities.Adversaire;
 import fr.efrei.judotrackerpro.back.entities.Competition;
@@ -9,6 +10,9 @@ import fr.efrei.judotrackerpro.back.entities.Statistiques;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class MatchActivity extends AppCompatActivity {
@@ -78,6 +82,38 @@ public class MatchActivity extends AppCompatActivity {
         penalites_adv.setText(Integer.toString(stats.getPenalitesAdv()));
         penalites_user.setText(Integer.toString(stats.getPenalitesUtilisateur()));
 
+        Toolbar appBar = findViewById(R.id.bar_edit_match);
+        setSupportActionBar(appBar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.match_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.edit_match:
+                Intent i = new Intent(MatchActivity.this, EditMatchActivity.class);
+                Bundle b = new Bundle();
+                b.putInt("id_match",match.getId_match());
+                i.putExtras(b);
+                finish();
+                startActivity(i);
+                return true;
+            case R.id.del_match:
+                LocalDatabase.getInstance(getApplicationContext()).deleteMatch(match);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
