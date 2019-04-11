@@ -89,7 +89,9 @@ public class EditCompetActivity extends AppCompatActivity implements DatePickerD
             edit_sex.setChecked(cate.getSexe().equals("femme"));
             int i = bdd.getAllCategories().indexOf(cate);
             edit_cate.setSelection(i);
-            edit_date.setText(competition.getDate_competition().toString());
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.FRANCE);
+            edit_date.setText(dateFormat.format(competition.getDate_competition()));
         }
 
         edit_sex.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

@@ -14,6 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 
 public class CompetStatsFragment extends Fragment {
 
@@ -51,7 +54,9 @@ public class CompetStatsFragment extends Fragment {
             cate.setText(categorie.getNom());
             sex.setText(categorie.getSexe());
         }
-        date.setText(competition.getDate_competition().toString());
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.FRANCE);
+        date.setText(dateFormat.format(competition.getDate_competition()));
 
 
         return view;
