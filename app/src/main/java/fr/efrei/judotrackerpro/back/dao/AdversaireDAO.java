@@ -27,7 +27,7 @@ public interface AdversaireDAO {
     List<Adversaire> getByNomPrenom(String nom, String prenom);
 
     @Insert
-    void insert(Adversaire adversaire);
+    long insert(Adversaire adversaire);
 
     @Update
     void update(Adversaire adversaire);

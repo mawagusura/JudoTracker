@@ -19,7 +19,7 @@ public class LocalDatabase {
     private static LocalDatabase INSTANCE = null;
 
     private LocalDatabase(Context context) {
-        this.bdd = Room.databaseBuilder(context, ConnectorDB.class, "judotracker").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+        this.bdd = Room.databaseBuilder(context, ConnectorDB.class, "judotracker2").fallbackToDestructiveMigration().allowMainThreadQueries().build();
     }
 
     public static LocalDatabase getInstance(Context context)
@@ -69,7 +69,7 @@ public class LocalDatabase {
         return bdd.adversaireDao().getByNom(prenom);
     }
 
-    public List<Adversaire> getAdversaireByPrenom(String nom, String prenom) {
+    public List<Adversaire> getAdversaireByNomPrenom(String nom, String prenom) {
         return bdd.adversaireDao().getByNomPrenom(nom, prenom);
     }
 
@@ -201,52 +201,52 @@ public class LocalDatabase {
 
     // INSERTS -----------------------------------------------
 
-    public void insertAdversaire(Adversaire adv) {
-        bdd.adversaireDao().insert(adv);
+    public long insertAdversaire(Adversaire adv) {
+        return bdd.adversaireDao().insert(adv);
     }
 
-    public void insertAdversaireAll(List<Adversaire> adv) {
-        bdd.adversaireDao().insertAll(adv);
+    public long[] insertAdversaireAll(List<Adversaire> adv) {
+        return bdd.adversaireDao().insertAll(adv);
     }
 
-    public void insertCategorie(Categorie cat) {
-        bdd.categorieDao().insert(cat);
+    public long insertCategorie(Categorie cat) {
+        return bdd.categorieDao().insert(cat);
     }
 
-    public void insertCategorieAll(List<Categorie> categories) {
-        bdd.categorieDao().insertAll(categories);
+    public long[] insertCategorieAll(List<Categorie> categories) {
+        return bdd.categorieDao().insertAll(categories);
     }
 
     public long insertCompetition(Competition compet) {
         return bdd.competitionDao().insert(compet);
     }
 
-    public void insertCompetitionAll(List<Competition> compet) {
-        bdd.competitionDao().insertAll(compet);
+    public long[] insertCompetitionAll(List<Competition> compet) {
+        return bdd.competitionDao().insertAll(compet);
     }
 
-    public void insertLocalisation(Localisation localisation) {
-        bdd.localisationDao().insert(localisation);
+    public long insertLocalisation(Localisation localisation) {
+        return bdd.localisationDao().insert(localisation);
     }
 
-    public void insertLocalisationAll(List<Localisation> localisation) {
-        bdd.localisationDao().insertAll(localisation);
+    public long[] insertLocalisationAll(List<Localisation> localisation) {
+        return bdd.localisationDao().insertAll(localisation);
     }
 
-    public void insertMatch(Match match) {
-        bdd.matchDao().insert(match);
+    public long insertMatch(Match match) {
+        return bdd.matchDao().insert(match);
     }
 
-    public void insertMatchAll(List<Match> match) {
-        bdd.matchDao().insertAll(match);
+    public long[] insertMatchAll(List<Match> match) {
+        return bdd.matchDao().insertAll(match);
     }
 
-    public void insertStatistiques(Statistiques stats) {
-        bdd.statistiquesDao().insert(stats);
+    public long insertStatistiques(Statistiques stats) {
+        return  bdd.statistiquesDao().insert(stats);
     }
 
-    public void insertStatistiquesAll(List<Statistiques> stats) {
-        bdd.statistiquesDao().insertAll(stats);
+    public long[] insertStatistiquesAll(List<Statistiques> stats) {
+        return bdd.statistiquesDao().insertAll(stats);
     }
 
 

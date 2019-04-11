@@ -15,7 +15,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditCompetActivity"></activity>
+        <activity android:name=".MatchActivity"></activity>
+        <activity
+            android:name=".EditMatchActivity"
+            android:label="@string/title_activity_edit_match"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".EditCompetActivity" />
         <activity
             android:name=".CompetitionActivity"
             android:label="@string/title_activity_competition" />

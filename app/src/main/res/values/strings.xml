@@ -20,8 +20,21 @@
 
     <string name="homme">Homme</string>
     <string name="femme">Femme</string>
+    <string name="title_activity_edit_match">EditMatchActivity</string>
+    <string name="opponent_text">Adversaire</string>
+    <string name="edit_firstname">Prénom :</string>
+    <string name="new_match_header">Nouveau match</string>
+    <string name="results">Résultats</string>
+    <string name="time">Durée du match :</string>
+    <string name="ippons_title">Ippons</string>
+    <string name="wazaari_title">Wazaaris</string>
+    <string name="yuko_title">Yukos</string>
+    <string name="me">Moi</string>
+    <string name="penalties_adv_label">Pénalités Adversaire :</string>
+    <string name="penalties_user_label">Pénalités pour moi :</string>
 
     <string name="edit_compet">Modifier</string>
     <string name="del_compet">Supprimer</string>
+    <string name="match_title">Match</string>
 
 </resources>

@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import fr.efrei.judotrackerpro.CompetitionActivity;
+import fr.efrei.judotrackerpro.MatchActivity;
 import fr.efrei.judotrackerpro.R;
 import fr.efrei.judotrackerpro.back.entities.Match;
 

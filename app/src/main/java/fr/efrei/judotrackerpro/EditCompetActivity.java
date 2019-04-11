@@ -98,13 +98,13 @@ public class EditCompetActivity extends AppCompatActivity implements DatePickerD
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
-                    List<Categorie> cates = bdd.getCategorieBySexe("femme");
+                    List<Categorie> cates = bdd.getCategorieBySexe("Femme");
 
                     CateAdapter adapter = new CateAdapter(EditCompetActivity.this, cates);
                     edit_cate.setAdapter(adapter);
                 }
                 else{
-                    List<Categorie> cates = bdd.getCategorieBySexe("homme");
+                    List<Categorie> cates = bdd.getCategorieBySexe("Homme");
 
                     CateAdapter adapter = new CateAdapter(EditCompetActivity.this, cates);
                     edit_cate.setAdapter(adapter);

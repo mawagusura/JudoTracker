@@ -3,6 +3,7 @@ package fr.efrei.judotrackerpro.back.entities;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import static androidx.room.ForeignKey.CASCADE;
@@ -28,6 +29,11 @@ import static androidx.room.ForeignKey.CASCADE;
                         onDelete=CASCADE
                 ),
 
+        },
+        indices = {
+                @Index(value = "id_competition"),
+                @Index(value = "id_adversaire"),
+                @Index(value = "id_stats")
         })
 public class Match {
     @PrimaryKey(autoGenerate = true)

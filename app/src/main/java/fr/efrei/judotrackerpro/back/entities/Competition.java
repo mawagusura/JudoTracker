@@ -5,6 +5,7 @@ import java.util.Date;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import static androidx.room.ForeignKey.CASCADE;
@@ -23,7 +24,12 @@ import static androidx.room.ForeignKey.CASCADE;
             childColumns = "id_localisation",
             onDelete=CASCADE
         )
-    })
+    },
+    indices = {
+        @Index(value = "id_localisation"),
+        @Index(value = "id_categorie")
+    }
+)
 
 public class Competition {
     @PrimaryKey(autoGenerate = true)

@@ -2,7 +2,6 @@ package fr.efrei.judotrackerpro;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -94,65 +93,72 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void populateDB(){
-        // Categories
-        List<Categorie> cates = new ArrayList<>();
-        cates.add(new Categorie(1,"Femme","-48kg"));
-        cates.add(new Categorie(2,"Femme","-52kg"));
-        cates.add(new Categorie(3,"Femme","-57kg"));
-        cates.add(new Categorie(4,"Femme","-63kg"));
-        cates.add(new Categorie(5,"Femme","-70kg"));
-        cates.add(new Categorie(6,"Femme","-78kg"));
-        cates.add(new Categorie(7,"Femme","+78kg"));
-        cates.add(new Categorie(8,"Homme","-60kg"));
-        cates.add(new Categorie(9,"Homme","-66kg"));
-        cates.add(new Categorie(10,"Homme","-73kg"));
-        cates.add(new Categorie(11,"Homme","-81kg"));
-        cates.add(new Categorie(12,"Homme","-90kg"));
-        cates.add(new Categorie(13,"Homme","-100kg"));
-        cates.add(new Categorie(14,"Homme","+100kg"));
-        bdd.insertCategorieAll(cates);
+        if (bdd.getAllMatchs().isEmpty() && bdd.getAllStatistiques().isEmpty() && bdd.getAllAdversaires().isEmpty()) {
+            // Categories
+            List<Categorie> cates = new ArrayList<>();
+            cates.add(new Categorie(1,"Femme","-48kg"));
+            cates.add(new Categorie(2,"Femme","-52kg"));
+            cates.add(new Categorie(3,"Femme","-57kg"));
+            cates.add(new Categorie(4,"Femme","-63kg"));
+            cates.add(new Categorie(5,"Femme","-70kg"));
+            cates.add(new Categorie(6,"Femme","-78kg"));
+            cates.add(new Categorie(7,"Femme","+78kg"));
+            cates.add(new Categorie(8,"Homme","-60kg"));
+            cates.add(new Categorie(9,"Homme","-66kg"));
+            cates.add(new Categorie(10,"Homme","-73kg"));
+            cates.add(new Categorie(11,"Homme","-81kg"));
+            cates.add(new Categorie(12,"Homme","-90kg"));
+            cates.add(new Categorie(13,"Homme","-100kg"));
+            cates.add(new Categorie(14,"Homme","+100kg"));
+            bdd.insertCategorieAll(cates);
 
-        // Adversaires
-        List<Adversaire> adversaires = new ArrayList<>();
-        adversaires.add(new Adversaire(1, "Hakman", "Guy"));
-        adversaires.add(new Adversaire(2, "Poeli", "Arnaud"));
-        adversaires.add(new Adversaire(3, "Melio", "Jean"));
-        adversaires.add(new Adversaire(4, "Guillot", "Arthur"));
-        adversaires.add(new Adversaire(5, "Hanou", "Vincent"));
-        bdd.insertAdversaireAll(adversaires);
+            // Adversaires
+            List<Adversaire> adversaires = new ArrayList<>();
+            adversaires.add(new Adversaire(1, "Hakman", "Guy"));
+            adversaires.add(new Adversaire(2, "Poeli", "Arnaud"));
+            adversaires.add(new Adversaire(3, "Melio", "Jean"));
+            adversaires.add(new Adversaire(4, "Guillot", "Arthur"));
+            adversaires.add(new Adversaire(5, "Hanou", "Vincent"));
+            bdd.insertAdversaireAll(adversaires);
 
-        // Localisations
-        List<Localisation> localisations = new ArrayList<>();
-        localisations.add(new Localisation(1, 2.6705562, 49.0779972));
-        localisations.add(new Localisation(2, 3.0706414, 50.6305089));
-        bdd.insertLocalisationAll(localisations);
+            // Localisations
+            List<Localisation> localisations = new ArrayList<>();
+            localisations.add(new Localisation(1, 2.6705562, 49.0779972));
+            localisations.add(new Localisation(2, 3.0706414, 50.6305089));
+            bdd.insertLocalisationAll(localisations);
 
-        // Competitions
-        List<Competition> competitions = new ArrayList<>();
-        competitions.add(new Competition(1, 13, 1, new Date(1554076800), "Tournoi Othis"));
-        competitions.add(new Competition(2, 14, 2, new Date(1551139200), "Tournoi Lille"));
-        bdd.insertCompetitionAll(competitions);
+            // Competitions
+            List<Competition> competitions = new ArrayList<>();
+            competitions.add(new Competition(1, 13, 1, new Date(1554076800), "Tournoi Othis"));
+            competitions.add(new Competition(2, 14, 2, new Date(1551139200), "Tournoi Lille"));
+            bdd.insertCompetitionAll(competitions);
 
-        // Statistiques
-        List<Statistiques> statistiques = new ArrayList<>();
-        statistiques.add(new Statistiques(1, 190, 0,2, 0, 0, 0, 1,
-                0, 1));
-        statistiques.add(new Statistiques(2, 167, 1,0, 1, 0, 1, 1,
-                0, 0));
-        statistiques.add(new Statistiques(3, 169, 1,0, 1, 0, 1, 1,
-                0, 0));
-        statistiques.add(new Statistiques(4, 135, 0,0, 1, 1, 1, 1,
-                0, 0));
-        statistiques.add(new Statistiques(5, 167, 0,1, 0, 1, 1, 1,
-                2, 1));
+            // Statistiques
+            List<Statistiques> statistiques = new ArrayList<>();
+            statistiques.add(new Statistiques(1, 190, 0,2, 0, 0, 0, 1,
+                    0, 1));
+            statistiques.add(new Statistiques(2, 167, 1,0, 1, 0, 1, 1,
+                    0, 0));
+            statistiques.add(new Statistiques(3, 169, 1,0, 1, 0, 1, 1,
+                    0, 0));
+            statistiques.add(new Statistiques(4, 135, 0,0, 1, 1, 1, 1,
+                    0, 0));
+            statistiques.add(new Statistiques(5, 167, 0,1, 0, 1, 1, 1,
+                    2, 1));
+            bdd.insertStatistiquesAll(statistiques);
 
-        // Matchs
-        List<Match> matchs = new ArrayList<>();
-        matchs.add(new Match(1, 1, 1, 1));
-        matchs.add(new Match(2, 2, 2, 2));
-        matchs.add(new Match(3, 3, 3, 3));
-        matchs.add(new Match(4, 4, 4, 4));
-        matchs.add(new Match(5, 5, 5, 5));
+            // Matchs
+            List<Match> matchs = new ArrayList<>();
+            matchs.add(new Match(1, 1, 1, 1));
+            matchs.add(new Match(2, 2, 2, 2));
+            matchs.add(new Match(3, 3, 3, 3));
+            matchs.add(new Match(4, 4, 4, 4));
+            matchs.add(new Match(5, 5, 5, 5));
+
+
+            bdd.insertMatchAll(matchs);
+        }
     }
+
 
 }
