@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             recycler.setAdapter(adapter);
         }
         else{
-            Toast.makeText(this, "Aucune coméptition n'existe pour le moment.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Aucune compétition n'existe pour le moment.", Toast.LENGTH_LONG).show();
         }
     }
 

@@ -54,13 +54,8 @@ public class EditMatchActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
 
         if(bundle!=null){
-            Integer matchId = bundle.getInt("id_match");
-            if (matchId != null) {
-                this.match = bdd.getMatch(matchId);
-            }
-
             Integer competId = bundle.getInt("id_competition");
-            if (matchId != null) {
+            if (competId != null) {
                 this.competition = bdd.getCompetition(competId);
             }
         }
@@ -84,12 +79,12 @@ public class EditMatchActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (nom_adv.toString().isEmpty() || prenom_adv.toString().isEmpty() || duree_match_min.toString().isEmpty()
-                        || duree_match_min.toString().isEmpty() || duree_match_sec.toString().isEmpty()
-                        || ippons_adv.toString().isEmpty() || wazaaris_adv.toString().isEmpty()
-                        || yukos_adv.toString().isEmpty() || ippons_user.toString().isEmpty()
-                        || wazaaris_user.toString().isEmpty() || yukos_user.toString().isEmpty()
-                        || penalites_adv.toString().isEmpty() || penalites_user.toString().isEmpty()
+                if (nom_adv.getText().toString().isEmpty() || prenom_adv.getText().toString().isEmpty() || duree_match_min.getText().toString().isEmpty()
+                        || duree_match_min.getText().toString().isEmpty() || duree_match_sec.getText().toString().isEmpty()
+                        || ippons_adv.getText().toString().isEmpty() || wazaaris_adv.getText().toString().isEmpty()
+                        || yukos_adv.getText().toString().isEmpty() || ippons_user.getText().toString().isEmpty()
+                        || wazaaris_user.getText().toString().isEmpty() || yukos_user.getText().toString().isEmpty()
+                        || penalites_adv.getText().toString().isEmpty() || penalites_user.getText().toString().isEmpty()
                 ) {
                     Toast.makeText(EditMatchActivity.this,"Veuillez rentrer tous les champs.", Toast.LENGTH_LONG).show();
                 }
@@ -129,7 +124,6 @@ public class EditMatchActivity extends AppCompatActivity {
                 Intent i = new Intent(EditMatchActivity.this,MatchActivity.class);
                 Bundle b = new Bundle();
                 b.putInt("id_match",(int) idMatch);
-                b.putInt("id_competition",(int) competition.getId_competition());
                 i.putExtras(b);
                 finish();
                 startActivity(i);
